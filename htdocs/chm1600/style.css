@@ -1,0 +1,96 @@
+pre,code
+  {
+  font: 100% Courier New, Courier, mono; 
+  color: #000000;
+  background: #dddddd;
+  cursor: text;
+  padding: 8px;
+  }
+
+pre.example
+  {
+  margin-left: 2.0em;
+  color: #C00000;
+  }
+
+table
+  {
+  background: #999999;
+  margin-top: .6em;
+  margin-bottom: .3em;
+  }
+    
+th
+  { 
+  padding: 4px 8px;
+  background: #cccccc;
+  text-align: left;
+  font-size: 80%;
+  vertical-align: bottom;
+  }
+
+th.cc
+  { 
+  text-align: center;
+  vertical-align: middle;
+  }
+
+td
+  { 
+  padding: 4px 8px;
+  background: #ffffff;
+  vertical-align: top;
+  font-size: 80%;
+  }
+
+td.cc
+  { 
+  text-align: center;
+  vertical-align: middle;
+  }
+
+
+blockquote
+  {
+  margin-left: 3.8em;
+  margin-right: 3.8em;
+  margin-top: .6em;
+  margin-bottom: .6em;
+  }
+
+a.parameter:link
+  {
+  color: #0066ff;
+  text-decoration:none;
+  }
+
+a.parameter:visited
+  {
+  text-decoration:none;
+  }
+
+div.footer
+  {
+  width: 100%;
+  border: none;
+  background: #ffffff;
+  margin-top: 18pt;
+  padding-bottom: 12pt;
+  color: #228B22;
+  text-align: center;
+  font-size: 70%;
+  }
+
+span.filename
+{
+  color: #F00000;
+}
+
+#gpt-omr {float:left}
+
+@media screen and (max-width:468px){
+ pre{white-space: pre-wrap;}
+ a {line-height:2;}
+ pre{white-space: pre-wrap;}
+}
+

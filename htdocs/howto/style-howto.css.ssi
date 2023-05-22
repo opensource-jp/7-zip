@@ -1,0 +1,55 @@
+/* common */
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,p,blockquote{margin:0;padding:0;}
+fieldset,img{border:0;}
+table{border-collapse:collapse;border-spacing:0;}
+ol,ul{list-style:none;}
+p{margin-bottom:0.5em;}
+h1,h2,h3{line-height:1.2;}
+h2,h3{margin-top:1em;}
+
+body{
+font-family:'Hiragino Kaku Gothic Pro',Meiryo,sans-serif;
+font-size:15px;
+line-height:1.5;
+word-break:break-all; 
+word-wrap:break-word;
+color:#333;
+padding:10px;
+}
+
+a{color:blue;text-decoration:none;}
+a:hover{color:green;text-decoration:none;}
+a.MenuLink{font-weight:bold;}
+a.current{text-decoration:none;color:#000;font-weight:bold;}
+a.bl{color:#000;cursor:text;text-decoration:none;}
+
+pre{color:#ccc;background-color:#000;padding:8px;}
+
+#sidebar{width:120px;margin:0 16px 0 0;padding:12px;background-color:#E0E0E0; font-size:13px;line-height:1.9; float:left;}
+#sidebar #sitelogo{display:block;height:63px;padding-bottom:1px;}
+#sidebar hr{margin:9px 0;}
+
+/*#contents{margin:16px 0 8px 152px; padding:8px;}
+*/
+#contents{padding:8px;}
+
+
+#synd-link {position: absolute; top:2px; right:2px; height:20px; overflow:hidden;line-height:1;}
+.twitter-button, .facebook-button, .gplus-button {vertical-align:top; margin-right:4px; display:inline-block; width:108px; height:20px; overflow:hidden;}
+.gplus-button{width:86px;}
+
+.leaderboard {display: inline-block;}
+.medium-rectangle {width:300px;height:250px;}
+.fright1 {float:right;height:280px;margin:0 0 8px 8px;}
+.fright2 {float:right;height:550px;margin:0 0 8px 8px;}
+
+@media screen and (max-width: 479px) {
+body{margin:0;padding:0;}
+#synd-link{top:0;right:0;}
+#sidebar {width:auto;float:inherit;margin:0;padding:30px 0 0;}
+#sidebar #sitelogo{float:left;margin-right:4px;}
+#sidebar ul, #sidebar li,#sidebar hr {display:inline;}
+img{ max-width: 100%; height: auto;}
+#contents{padding:6px;}
+.leaderboard{margin-left:-6px;}
+}

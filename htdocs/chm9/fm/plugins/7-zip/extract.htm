@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+  <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+  <TITLE>Extract Dialog Box</TITLE>
+  <LINK href="style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-6708582-1', 'auto');
+document.pagegroup='other';
+</script>
+</HEAD>
+<BODY>
+<div class="navlink"><a href="https://sevenzip.osdn.jp/">7-Zip</a></div>
+<H1>Extract Dialog Box</H1>
+
+<P>Allows you to specify options for extracting files from archive.</P>
+
+<H4>How to run this dialog box</H4>
+<P>There are two ways to run this dialog</P>
+<UL>
+  <LI>To extract all files from an archive:
+    <OL>
+      <LI>In Windows Explorer or in 7-Zip, right-click the archive file.</LI>
+      <LI>Point to <B>7-Zip</B>, and then click <B>Extract files...</B>.</LI>
+    </OL>
+  </LI>
+
+  <LI>To extract specified files from an archive opened in the browsing window:
+    <OL>
+      <LI>Open archive with 7-Zip.</LI>
+      <LI>Select items to extract.</LI>
+      <LI>Right-click items and then click <B>Copy To...</B>.</LI>
+    </OL>
+  </LI>
+</UL>
+
+
+<H4>Parameters</H4>
+<DL>
+  <DT>Extract to</DT>
+  <DD>Provides a space for you to specify an output folder.
+     You can click &quot;<B>...</B>&quot; button to display &quot;Browse for folder&quot;
+     dialog box that you can use to locate output folder.</DD>
+
+  <DT>Path mode</DT>
+  <DD>
+    <P>Specify extract mode:</P>
+    <TABLE>
+      <TR> <TH>Value</TH> <TH>Meaning</TH> </TR>
+      <TR> <TD>Full pathnames</TD> <TD>Extract files with full pathnames.</TD> </TR>
+      <TR> <TD>No pathnmes</TD> <TD>Extract files without folder paths.</TD> </TR>
+    </TABLE>
+  </DD>
+
+  <DT>Overwrite mode</DT>
+  <DD>
+    <P>Specify overwrite mode for files that already present on disk:</P>
+    <TABLE>
+      <TR> <TH>Value</TH> <TH>Meaning</TH> </TR>
+      <TR> <TD>Ask before overwrite</TD> <TD>Ask before overwriting existing files.</TD> </TR>
+      <TR> <TD>Overwrite without prompt</TD> <TD>Overwrite existing files without prompt.</TD> </TR>
+      <TR> <TD>Skip existing files</TD> <TD>Skip extracting of existing files.</TD> </TR>
+      <TR> <TD>Auto rename</TD> <TD>Rename extracted files, if a file with the same name already exists.
+                        For example, file document.txt will be renamed to document_1.txt.</TD> </TR>
+      <TR> <TD>Auto rename existing files</TD> <TD>Rename existing files, if a file with the same name already exists.
+                        For example, file document.txt will be renamed to document_1.txt.</TD> </TR>
+    </TABLE>
+  </DD>
+
+  <DT>Files</DT>
+  <DD>
+    <P>Specifies files for extracting:</P>
+    <TABLE>
+      <TR> <TH>Value</TH> <TH>Meaning</TH> </TR>
+      <TR> <TD>Selected files</TD> <TD>Extract only files that are selected in the main window.</TD> </TR>
+      <TR> <TD>All files</TD> <TD>Extract all files.</TD> </TR>
+    </TABLE>
+  </DD>
+
+  <DT>Password</DT>
+  <DD>
+    <P>Specifies a password for encrypted archives.</P>
+  </DD>
+</DL>
+<div id="gpt-of7" class="leaderboard"></div>
+<div id="fb-root"></div>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="https://sevenzip.osdn.jp/script.js"></script>
+</BODY>
+</HTML>

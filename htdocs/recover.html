@@ -1,0 +1,334 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="CONTENT-TYPE" content="TEXT/HTML; CHARSET=UTF-8">
+<LINK href="style.css" rel="stylesheet" type="text/css">
+<!-- HeadSubstituteBegin -->
+<TITLE>How to recover corrupted 7z archive</TITLE>
+<META name="keywords" content="7z, lzma, 7-zip, archiver, free, compression, zip, 
+best, compress, solid, high, ratio, unzip, far, win32, 7zip, long, file, names">
+<!-- HeadSubstituteEnd -->
+</HEAD>
+<BODY>
+
+<!-- to page translators: this page describes some technical things and
+can be changed several times in future. It can be difficult for you
+to support updated version of translation. So don't translate it and 
+just link to this original English version of page --> 
+
+<H1>How to recover corrupted 7z archive</H1>
+
+<H2>Try latest version of 7-Zip</H2>
+
+<P>It's possible that new version of 7-Zip can solve your problems with 7z archives.
+So download latest version of 7-Zip and try to use that new version.
+You can try also latest alpha or beta version.
+If new version also doesn't help, read this manual.</P>
+
+<H2>Required software:</H2>
+<UL>
+  <LI>7-Zip (latest version, that can be stable, alpha or beta version). 
+  <LI>Some program with hex viewer or editor,
+      for example, <A href="http://www.farmanager.com">FAR Manager</A>.
+</UL>
+
+<H2>7z archive structure</H2>
+
+<P>7z archive consists of 4 main blocks of data:
+<OL>
+  <LI>Start Header (32 bytes): it contains signature and link to End Header
+  <LI>Compressed Data of files 
+  <LI>Compressed Metadata Block for files: it contains links to Compressed Data, information about compression methods, CRC, file names, sizes, timestamps and so on.
+  <LI>End Header: it contains link to Compressed Metadata Block. 
+</OL>
+
+Note: If 7z archive contains only one file without encryption, 
+      7-Zip stores Metadata for that file in End Header in uncompressed form, 
+      and there are only 3 main blocks in that case.
+
+<H3>Archive example</H3>
+
+<P>Archive example: a.7z (3740 bytes) that contains 5 files compressed 	with LZMA method.
+<P>Start of archive:</P>
+<PRE>
+0000000000: 37 7A BC AF 27 1C 00 04 5B 38 BE F9 59 0E 00 00 
+0000000010: 00 00 00 00 23 00 00 00 00 00 00 00 7A 63 68 FD 
+0000000020: 00 21 16 89 6C 71 3D AB 7D 89 E6 3C 2E BE 60 24 
+
+00: 6 bytes: 37 7A BC AF 27 1C        - Signature 
+06: 2 bytes: 00 04                    - Format version
+08: 4 bytes: 5B 38 BE F9              - CRC of the following 20 bytes
+0C: 8 bytes: 59 0E 00 00 00 00 00 00  - relative offset of End Header
+14: 8 bytes: 23 00 00 00 00 00 00 00  - the length of End Header
+1C: 4 bytes: 7A 63 68 FD              - CRC of the End Header
+
+Relative offset of End Header is relative from the end of Start Header,
+that is at offset 0x20 (32 in decimal).
+Real offset of End Header in example archive = 0x20 + 0x0E59 = 0x0E79
+
+20: 00 21 16 89 ... - start of compressed data. 
+    Note: if the file was compressed with LZMA method, the first byte 
+          is always 00. If first byte is not 00, then archive uses
+          another method (it can be LZMA2 or encrypted data with AES).
+</PRE>
+
+<P>End of archive:</P>
+<PRE>
+End Header (offset = 0x0E59, length = 0x23):
+
+0000000E70:                            17 06 8D AD 01 09 80 
+0000000E80: AC 00 07 0B 01 00 01 23 03 01 01 05 5D 00 10 00 
+0000000E90: 00 0C 81 1A 0A 01 3C 70 52 F7 00 00             
+
+Possible values for first byte in End Header:
+   17 - End Header contains the link to Metadata Block.
+   01 - Metadata block is stored in End Header.
+</PRE>
+
+<H2>Corruption types</H2>
+
+<P>There are some possible cases when archive is corrupted:
+<UL>
+  <LI>You can open archive and you can see the list of files, but when you press 
+      Extract or Test command, there are some errors: Data Error or CRC Error.
+  <LI>When you open archive, you get message "Can not open file 'a.7z' as archive"
+</UL>
+
+<H2>Corruption case: Data errors or CRC errors for files inside archive</H2>
+
+<P>Here we describe the case, when you can open archive and you see the list of files, 
+but when you press Extract or Test command, there are some errors: Data Error or CRC Error.</P>
+
+<P>It's pretty difficult to recover data for that case.</P>
+
+<P>If archive was compressed in "Solid" mode, and you have exact copies of
+some files from archive, you can create similar archive with good copies of 
+files with same settings and in same order, and replace "bad" parts of bad.7z 
+with "good" parts from another good.7z. You must look listings of files in bad and 
+good archives, logs of "test" command, and think about ways to replace bad parts.
+
+<P>The are no more instructions here for that corruption case.</P>
+
+<H2>Corruption case: Can not open file 'a.7z' as archive</H2>
+
+<P>If you try to open or extract archive and you see the message 
+"Can not open file 'a.7z' as archive", it means that 7-Zip can't open some
+header from the start or from the end of archive.</P>
+
+<P>In that case you must open archive in hex editor and look to Start Header and End Header.</P>
+
+<P>Possible cases:</P>
+
+<UL>
+
+<LI>Case: If start of archive is corrupted, then there is no link to End Header.
+   But if the End Header is OK, and the size of archive is also correct, 
+   you can replace data in Start Header in hex editor to the following values: 
+<PRE>
+0000000000: 37 7A BC AF 27 1C 00 04 00 00 00 00 00 00 00 00
+0000000010: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+</PRE>
+
+<P>Then try to open archive, if you can open and you see the list of files, 
+try Test or Extract command. Look also "Data errors or CRC errors" section in this page.</P>
+
+<LI>Case: Start Header and End Header are OK, but total size of archive is not OK.
+You can calculate correct size of archive from values in Start Header.
+Then you must recover correct size. You can insert some data or remove some data 
+somewhere in archive (for example, at offset of several MBs before the end of archive).
+
+<P>
+For example, if you have multi-volume archive: a.7z.001, ... , a.7z.009, 
+but one part a.7z.008 is missing,
+just copy a.7z.007 to file a.7z.008, and 7-Zip will see correct size of archive.
+Or if some part was reduced, look the size of another parts and restore original (correct) 
+size of "bad" part, so total size will be correct again, and 7-zip will be able 
+to open headers.</P>
+
+<LI>Case: The end of archive is corrupted or missing. The following text describes that case.
+
+</UL>
+
+<H2>There is no correct End Header at the end of archive</H2>
+
+<P>7-Zip writes full Start Header only at the end of archive creation operation.</P>
+
+<P>You can look to Start Header. If you see signature with version and zeros in another fields:</P>
+<PRE>
+0000000000: 37 7A BC AF 27 1C 00 04 00 00 00 00 00 00 00 00
+0000000010: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+</PRE>
+<P>then archive creation operation probably was interrupted by some reason.
+And in that case probably there are no Metadata Block and End Header at the end of archive.</P>
+
+<P>Note: If archive is multi-volume, uncompleted Start Header is also possible, 
+if first volume was copied before end of archive (last volume) was written.
+In that case archive is not corrupted. And 7-Zip can unpack such archive, if total 
+size is correct and if there is correct End Header.</P>
+
+<P>If Start Header is OK, you can calculate correct archive size and compare with the size 
+of archive that you have.</P>
+
+<P>If there is no End Header, you can not recover file names, timestamps, and another metadata, 
+but probably it's possible to recover some data as raw file, and then it's possible to 
+recover data from raw file with some parser.</P>
+
+<P>We describe all steps with example:</P>
+<OL>
+  <LI> Create good 7z archive
+  <LI> Corrupt archive
+  <LI> Recover files from corrupted archive
+</OL>
+
+<H2>Create good archive</H2>
+
+<P>We create some good archive. We use readme.txt (1565 bytes) form 7-Zip 9.20 as example file.</P>
+<P> Create readme.txt.bz2, readme.zip, readme.txt.gzip and readme.txt.xz archives from readme.txt.<P>
+<P> Create a.7z with LZMA method that contains all files:
+<PRE>
+  readme.txt.bz2
+  readme.txt.gz
+  readme.zip
+  readme.txt
+  readme.txt.xz
+</PRE>
+<P>We have a.7z (3740 bytes). You can look that file in hex editor.
+It must have structure similar to structure of 7z file described above.</P>
+
+<H2>Corrupt archive</H2>
+
+<P>Now we currupt a.7z archive. We want to split archive into two parts:
+<UL>
+  <LI> a.7z.001: Start Header, some part of Compressed Data
+  <LI> a.7z.002: Some part of Compressed Data, Metadata, End Header
+</UL>
+
+<P>Metadata block with End Header are not big for our test archive (smaller than 300 bytes).</P>
+
+<P>We call "Split file..." command in 7-Zip File Manager and type "3000 100G" in "Split to volumes, bytes:" field (100G means that second part can not be larger than 100 GB).</P>
+
+<P>We have two parts: a.7z.001 (3000 bytes) and a.7z.002 (740 bytes).
+Then we copy a.7z.001 to bad.7z and try to open bad.7z. And we get
+the message "Can not open file 'bad.7z' as archive", so we have corrupted archive.</P>
+
+<H3>Recover archive</H3>
+
+<P>We open bad.7z in hex editor</P>
+
+<PRE>
+0000000000: 37 7A BC AF 27 1C 00 04 5B 38 BE F9 59 0E 00 00
+0000000010: 00 00 00 00 23 00 00 00 00 00 00 00 7A 63 68 FD
+0000000020: 00 21 16 89 6C 71 3D AB 7D 89 E6 3C 2E BE 60 24
+</PRE>
+
+<p>We see that Start Header is OK.</P>
+<P>We calculate correct archive size from Start Header fields values:</P>
+<P>0x0E59 + 0x20 + 0x23 = 0x0E9C = 3740</P>
+<P>Correct size is 3740 bytes, but our "bad.7z" is only 3000 bytes.</P>
+
+<P>We look to the end of archive:</P>
+<PRE>
+0000000B60: 55 73 EA 87 45 18 FC AD 67 0D 40 EF F4 41 49 63
+0000000B70: 6A 87 54 70 32 6C B0 8F 76 2A 63 BF 12 5D 88 CD
+0000000B80: 22 76 9F 97 05 3B 37 BE 49 CD F8 0A CC 67 FB FE
+0000000B90: 17 2E 16 D5 1F 8C 5A 30 08 7F C6 E9 98 9F 00 F1
+0000000BA0: A6 99 F9 ED 01 62 84 48 77 69 C7 65 21 21 42 66
+0000000BB0: 48 F1 FE 79 06 08 25 68
+</PRE>
+
+<P>And we don't see End Header at the end of archive.</P>
+
+<P>Conclusion: archive probably was truncated.</P>
+
+<P>Now we want to create another "good" 7z archive that contains good Start Header, End Header.
+and we want to place Compressed Data block from bad.7z inside that new "good" archive.</P>
+
+<P>At first we look start of Compressed Data block  in bad.7z:</P>
+<PRE>
+0000000020: 00 21 16 89 6C 71 3D AB 7D 89 E6 3C 2E BE 60 24
+</PRE>
+
+<P>If LZMA method was used, then first byte in compressed data is always 0 and 
+high bit of second byte is also 0. So if we see 00 in first byte and from 00 to 7F in second byte, probably LZMA method was used (not LZMA2).</P>
+
+<P>If first byte in compressed data is not 0 or if the value of second byte is higher
+ then 7F, then it's not LZMA stream. It can be LZMA2 (or AES encrypted stream).</P>
+
+<P>We must create new "good" 7z archive with same method as in bad.7z, and new archive 
+must be much larger than bad.7z</P>
+
+<P>So we select some big file for that new archive. In some cases you can use even bad.7z as 
+that big file. 
+But we use 7-zip.chm. We rename 7-zip.chm (91020 bytes) to file raw.dat and we compress 
+raw.dat to raw.7z with LZMA method with big dictionary size value. The dictionary size 
+must be equal or larger than dictionary size in bad.7z.</P>
+
+<P>raw.7z is (84898 bytes) that is much larger than bad.7z, as required. if raw.7z 
+is smaller than "bad.7z", you must create another raw.7z with another raw.dat that is larger.</P>
+
+<P>We call "Split file..." function for bad.7z and type "32 100G" in "Split to volumes, bytes:" field.
+<P>It creates 2 parts:</P>
+<UL>
+  <LI>bad.7z.001:   32 bytes : Start Header
+  <LI>bad.7z.002: 2968 bytes : start of Compressed Data
+</UL>
+
+<P>We call "Split file..." function for raw.7z and type "32 2968 100G" in "Split to volumes, bytes:" field. Note that the value 2968 is equal to size of "bad.7z.002". When you recover 
+real archive, you must use exact size of your bad.7z.002.</P>
+
+<P>It creates 3 parts:</P>
+<UL>
+  <LI>raw.7z.001:   32 bytes : Start Header
+  <LI>raw.7z.002: 2968 bytes : start of Compressed Data
+  <LI>raw.7z.003: 81898 bytes : end of Compressed Data, Metadata Block, End Header
+</UL>
+
+<P>Then we rename bad.7z.002 file to raw.7z.002</P>
+
+<P>Now multi-volume "raw.7z.*" archive contains good headers from raw.7z and compressed data from "bad.7z"</P>
+
+<P>We press "Extact" for raw.7z.001 file. It will extract raw.dat file and probably it will show "Data Error" message.</P>
+
+<P>Now we have raw.dat file that contains recovered stream from bad.7z.</P>
+
+<P>Most of 7z archives are solid. If bad.7z archive was solid, then recovered stream
+consists of concatenated original files</P>
+
+<P>If bad.7z archive is not solid, then recovered stream
+contains data for one file. It can also contain some garbage data at the end.</P>
+
+<H2>Parsing raw stream for recovered solid archive</H2>
+
+<P>No we must use some parser software that will look raw.dat, search file 
+signatures and extract some files from that file.</P>
+
+<P>You can try to use parser from 7-Zip.</P>
+
+<P>You need 7-Zip 9.34 alpha or later version.</P>
+
+<P>Select raw.dat and call context menu command "7-Zip > Open Archive > #" </P>
+<P>It shows:<P>
+<PRE>
+  1.bz2
+  2.readme.txt.gz
+  3.zip
+  4
+  5.xz
+</PRE>
+
+<P> Press Extract command to extract these files.</P>
+
+<P> So we have recovered some of the original files, but without original names.</P>
+
+<P> 7-Zip parser can find archives in raw file. But it doesn't recognize another files, 
+like xml, html, jpg, png files and so on. 
+So probably you need some another parser software to extract files from raw file.</P>
+
+<H2>Recovering non-solid archives and archives with multiple solid blocks</H2>
+
+<P>If there are more than one solid block in 7z archive, you must detect exact end of solid block, and start of next solid block.</P>
+
+<P>The recovering procedure for that case will be described in future</P>
+
+</BODY>
+</HTML>

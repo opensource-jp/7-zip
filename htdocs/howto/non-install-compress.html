@@ -1,0 +1,118 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8">
+<title>インストールしないでzipや7z圧縮ファイルを作る方法 | 7-Zip</title>
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="https://sevenzip.osdn.jp/style-howto.css">
+</head><body>
+<div id="body-inner">
+<div id="sidebar">
+<a href="https://sevenzip.osdn.jp/" id="sitelogo"><img width="110" height="63" src="/7ziplogo.png" alt="7-Zip"></a>
+<hr>
+<ul>
+<li><a href="https://sevenzip.osdn.jp/" class="MenuLink">ホーム</a>
+<li><a href="https://sevenzip.osdn.jp/7z.html" class="MenuLink">7zファイル</a>
+<li><a href="https://sevenzip.osdn.jp/sdk.html" class="MenuLink">LZMA SDK</a>
+<li><a href="https://sevenzip.osdn.jp/download.html" class="MenuLink">ダウンロード</a>
+<li><a href="https://sevenzip.osdn.jp/faq.html" class="MenuLink">FAQ</a>
+<li><a href="https://sevenzip.osdn.jp/support.html" class="MenuLink">サポート</a>
+<li><a href="https://sevenzip.osdn.jp/links.html" class="MenuLink">リンク</a>
+</ul>
+<hr>
+<ul>
+<li><a href="https://sevenzip.osdn.jp/howto/">日本語howto</a>
+<li><a href="https://sevenzip.osdn.jp/chm/start.htm">ヘルプ</a>
+</ul>
+</div>
+<div id="contents">
+<h1>インストールしないでzipや7z圧縮ファイルを作る方法</h1>
+<div class="fright1">
+</div> 
+<p>
+圧縮ファイルの作成で、Windowsの管理者権限がなかったり、レジストリに何も書かれたくないなどの理由によって、ソフトウェアのインストールをしたくない場合は、いくつかの方法があります。
+</p>
+<h2>コマンドライン版を使う方法</h2>
+<p>
+もっとも簡単なのは7-Zipのコマンドライン版を使う方法です。まず、「ダウンロード」のページから「7-Zip コマンドラインバージョン」を選択してファイルをダウンロードします。ファイル名は、
+</p>
+<p>
+7za<バージョン番号>.zip
+</p>
+<p>
+のようになっています。これをダウンロードしたら、適当なフォルダに解凍します。zip形式になっていますが、Windows標準の機能だけでも解凍できます。ZIPファイルに含まれるのは以下のファイルです。
+</p>
+<img src="7za-file-list.png" alt="7za-file-list.png">
+<p>
+この中の7za.exeファイルだけで、圧縮や解凍が行えます。
+</p>
+<h3>コマンドプロンプトで圧縮</h3>
+<p>
+基本的な操作は、コマンドプロンプトを起動してコマンドで操作する方法です。
+7za.exeファイルがC:\toolsにあるとして、ファイルdata.xlsxがC:\downloadsにあり、これをdata.zipファイルにしたいとします。まず、「アクセサリ」－「コマンドプロンプト」からコマンドプロンプトを起動します。
+</p>
+<img src="cmd.exe.png" alt="cmd.exe.png">
+<p>
+コマンドプロンプトが起動したら、C:\downloadsに移動し、7za.exeを起動します。
+</p>
+<pre>
+<strong>cd c:\downloads
+c:\tools\7za.exe a data.zip data.xlsx</strong>
+
+7-Zip (A) 9.20  Copyright (c) 1999-2010 Igor Pavlov  2010-11-18
+Scanning
+
+Creating archive data.zip
+
+Compressing  data.xlsx
+
+Everything is Ok
+</pre>
+<p>
+コマンドの意味は、次のようになります。
+</p>
+<p>
+7za.exe <命令> <圧縮ファイル名>　<圧縮したいファイル名>
+</p>
+<p>
+圧縮するには「a」（add、追加）を入力します。指定した<圧縮ファイル名>がすでに存在していれば、その圧縮ファイルにファイルを追加して圧縮します。
+</p>
+<div id="gpt-hm7" class="leaderboard"></div>
+<h3>圧縮形式の変更</h3>
+<p>
+上記のように、<圧縮ファイル名>を.zipとすればZIPファイルが作成されます。data.7zのように.7zというファイル名にすれば、自動的に7zファイルが作成されます。
+</p>
+<p>
+なお、「-t」オプションを使って「-tzip」のように指定すると、明示的に圧縮形式を指定できます。
+</p>
+<pre>
+<strong>c:\tools\7za.exe a -tzip data.zip data.xlsx</strong>
+</pre>
+<h3>ドラッグ＆ドロップで圧縮できるようにする</h3>
+<p>
+～.batというファイル名でバッチファイルを作成すれば、圧縮したいファイルおよびファイル群をバッチファイルにドラッグ＆ドロップして圧縮ファイルを作ることができます。
+</p>
+<p>
+まず、テキストエディタや「アクセサリ」－「メモ帳」を開き、以下のような内容を記述します。
+</p>
+<pre>
+C:\tools\7za.exe a %1.zip %*
+</pre>
+<p>
+（7za.exeファイルがC:\toolsにある場合）
+</p>
+<p>
+%1.zipの部分は圧縮ファイル名で、最初にドラッグ＆ドロップされたファイルのファイル名＋.zipというファイル名になります。%*はドラッグ＆ドロップされたファイルもしくはファイル群のファイル名が入ります。
+このテキストをデスクトップなど任意の場所に「圧縮.bat」というような名前で保存します。
+</p>
+<img src="compress-bat.png" alt="compress-bat.png">
+<p>
+以上で準備完了です。後はこのファイル（アイコン）に任意のファイルもしくは複数のファイルをドラッグ＆ドロップすれば、圧縮ファイルが作成されます。
+</p>
+<img src="compress-bat-drag.png" alt="compress-bat-drag.png">
+<p>
+圧縮ファイルが作成される場所はドラッグ＆ドロップしたファイルと同じフォルダになります。
+</p>
+<hr>
+<p><small>OSDN Project</small></p> 
+</div>
+</div>
+</body></html>
+

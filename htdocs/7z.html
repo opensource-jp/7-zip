@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="canonical" href="https://sevenzip.osdn.jp/7z.html">
+<TITLE>7zファイル （7zフォーマット）</TITLE>
+<META name="description" content="7zファイルは7-Zipで開発している高圧縮率の新しい圧縮形式です。">
+<META name="keywords" content="アーカイバ,圧縮,展開,解凍,フリー,無料,日本語,archiver, compression, zip, best, compress,high, ratio, free, gnu, lgpl, unzip, far, win32, 7zip, long, file, names">
+<link rel="stylesheet" type="text/css" href="/style-m.css">
+</HEAD>
+<BODY>
+<div id="body-inner">
+<div id="sidebar">
+<a href="https://sevenzip.osdn.jp/" id="sitelogo"><img width="110" height="63" src="/7ziplogo.png" alt="7-Zip"></a>
+<hr>
+<ul>
+<li><a href="https://sevenzip.osdn.jp/" class="MenuLink">ホーム</a>
+<li><a href="https://sevenzip.osdn.jp/7z.html" class="MenuLink current">7zファイル</a>
+<li><a href="https://sevenzip.osdn.jp/sdk.html" class="MenuLink">LZMA SDK</a>
+<li><a href="https://sevenzip.osdn.jp/download.html" class="MenuLink">ダウンロード</a>
+<li><a href="https://sevenzip.osdn.jp/faq.html" class="MenuLink">FAQ</a>
+<li><a href="https://sevenzip.osdn.jp/support.html" class="MenuLink">サポート</a>
+<li><a href="https://sevenzip.osdn.jp/links.html" class="MenuLink">リンク</a>
+</ul>
+<hr>
+<P id="language"></P>
+<ul>
+<li><a href="https://sevenzip.osdn.jp/chm/start.htm">ヘルプ</a>
+<li><a href="https://sevenzip.osdn.jp/chm/cmdline/syntax.htm">command line</a>
+</ul>
+</div>
+<div id="contents">
+<H1>7zファイル（7zフォーマット）</H1>
+
+<P><B>7z</B>（拡張子.7z）は、高圧縮率の新しい圧縮フォーマットです。</P>
+
+<P><B>7zファイル</B>の主な特徴:</P>
+<UL>
+  <LI>オープンアーキテクチャ
+  <LI>高いデータ圧縮率
+  <LI>強いAES-256暗号化
+  <LI>さまざまな圧縮方式、変換、暗号化に対応
+  <LI>16000000000GBのサイズまで対応
+  <LI>Unicodeファイル名
+  <LI>複数ファイル、ファイル階層構造のまま圧縮可（Solid compressing）
+  <LI>アーカイブヘッダーの圧縮
+</UL>
+
+<P><B>7z</B>はオープンアーキテクチャなので、さまざまな新しい圧縮方式に対応できます。
+現在の<B>7z</B>に実装している方式:</P>
+
+<TABLE cellspacing ="2" cellpadding ="4">
+  <TR> <TH class="Title" width="60">Method</TH> <TH class="Title">Description</TH></TR>
+  <TR> <TD class="Item">LZMA</TD> <TD class="Item">LZ77アルゴリズムを改良・最適化したもの</TD></TR>
+  <TR> <TD class="Item">LZMA2</TD> <TD class="Item">LZMAの改良バージョン</TD></TR>
+  <TR> <TD class="Item">PPMD</TD> <TD class="Item">Dmitry ShkarinのPPMdHに多少の修正を加えたもの</TD></TR>
+  <TR> <TD class="Item">BCJ</TD> <TD class="Item">32ビットx86実行ファイル向けのコンバーター</TD></TR>
+  <TR> <TD class="Item">BCJ2</TD> <TD class="Item">32ビットx86実行ファイル向けのコンバーター</TD></TR>
+  <TR> <TD class="Item">BZip2</TD> <TD class="Item">スタンダードBWTアルゴリズム</TD></TR>
+  <TR> <TD class="Item">Deflate</TD> <TD class="Item">スタンダードLZ77ベースのアルゴリズム</TD></TR>
+</TABLE>
+
+<P><B>LZMA</B>は<B>7z</B>の標準圧縮方式です。<B>LZMA</B>の特徴:</P>
+<UL>
+  <LI>高いデータ圧縮率
+  <LI>可変の辞書サイズ（4GBまで）
+  <LI>圧縮スピード: 2GHzのCPUで約1MB/秒
+  <LI>展開（解凍）スピード： 2GHzのCPUで約10～20MB/秒
+  <LI>展開（解凍）時の要求メモリが少ない（辞書サイズに依存）
+  <LI>展開（解凍）コードが小さい:約5KB
+  <LI>マルチスレッドとPentium4のハイパースレッディングに対応
+</UL>
+
+<P><B>LZMA</B>圧縮アルゴリズムは、組み込みアプリケーションにとても向いています。
+<B>LZMA</B>はGNU LGPLのライセンスでリリースされています。<B>LZMA</B>はまた、商用ライセンスでも利用可能です。<B>LZMA</B>のコードを利用したい場合、カスタムコードのプログラミングや必要な開発ライセンスについて、<A href="https://sevenzip.osdn.jp/support.html">Send message to LZMA developer</A>のページから相談してください。また、<A href ="https://sevenzip.osdn.jp/sdk.html">LZMA SDK</A>の情報をチェックしてください。</P>
+
+<P>7-ZipはAES-256アルゴリズムの暗号化にも対応しています。このアルゴリズムは256ビット長の暗号鍵を使います。7-Zipでは、鍵の生成にSHA-256ハッシュアルゴリズムをベースにした微分関数を使っています。鍵微分関数はユーザーが設定したテキストパスワードから微分鍵を生成します。7-Zipでは、総当りによるパスワード解析のコストを増大させるために、テキストパスワードに対し暗号化を繰り返したものを暗号鍵として使用しています。
+
+<P><B>7z</B>は、GNU LGPLで配布されている<A href="https://sevenzip.osdn.jp/">7-Zip</A>プログラムの一部です。<B>7-Zip</B>のソースやバイナリファイルは<A href ="https://sevenzip.osdn.jp/download.html">ダウンロードページから</A>からダウンロードできます。</P>
+
+<p><B>7zファイル</B>をサポートしているアプリケーション: WinRAR、PowerArchiver、TUGZip、IZArc</p>
+
+<p>リンク:</p>
+<ul>
+<li><A href="https://ja.wikipedia.org/wiki/7z">Wikipediaにある7zの解説</A></li>
+</ul>
+
+<HR>
+<P><SMALL>Copyright (C) 2019 Igor Pavlov. <br>
+This japanese site is maintained by <a href="https://opensource.jp/">Open Source Group Japan</a>.
+</SMALL></P>
+</div>
+</div>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="/script-m.js"></script>
+</BODY></HTML>

@@ -1,0 +1,314 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="canonical" href="https://sevenzip.osdn.jp/download.html">
+<TITLE>ダウンロード | 7-Zip</TITLE>
+<META name="keywords" content="解凍ソフト,アーカイバ,圧縮,展開,解凍,フリー,無料,日本語,archiver, compression, zip, best, compress,high, ratio, free, gnu, lgpl, unzip, far, win32, 7zip, long, file, names">
+<link rel="stylesheet" type="text/css" href="/style-m.css">
+</HEAD>
+<BODY>
+<div id="body-inner">
+<div id="sidebar">
+<a href="https://sevenzip.osdn.jp/" id="sitelogo"><img width="110" height="63" src="/7ziplogo.png" alt="7-Zip"></a>
+<hr>
+<ul>
+<li><a href="https://sevenzip.osdn.jp/" class="MenuLink">ホーム</a>
+<li><a href="https://sevenzip.osdn.jp/7z.html" class="MenuLink">7zファイル</a>
+<li><a href="https://sevenzip.osdn.jp/sdk.html" class="MenuLink">LZMA SDK</a>
+<li><a href="https://sevenzip.osdn.jp/download.html" class="MenuLink current">ダウンロード</a>
+<li><a href="https://sevenzip.osdn.jp/faq.html" class="MenuLink">FAQ</a>
+<li><a href="https://sevenzip.osdn.jp/support.html" class="MenuLink">サポート</a>
+<li><a href="https://sevenzip.osdn.jp/links.html" class="MenuLink">リンク</a>
+</ul>
+<hr>
+<P id="language"></P>
+<ul>
+<li><a href="https://sevenzip.osdn.jp/chm/start.htm">ヘルプ</a>
+<li><a href="https://sevenzip.osdn.jp/chm/cmdline/syntax.htm">command line</a>
+</ul>
+</div>
+<div id="contents">
+<H1>ダウンロード</H1>
+
+<P><B>圧縮・解凍ソフト7-Zip 19.00 (2019-02-21) Windows版のダウンロード</B>:</P>  
+<TABLE>
+  <TR>
+    <TH class="Title">リンク</TH>
+    <TH class="Title">タイプ</TH>
+    <TH class="Title">Windows</TH>
+    <TH class="Title">概要</TH>
+  </TR>
+  <TR>
+    <TD class="Item"><A href="https://ja.osdn.net/dl/sevenzip/7z1900.exe/" target="_blank">ダウンロード</A></TD>
+    <TD class="Item">.exe</TD>
+    <TD class="Item">32ビット x86</TD>
+    <TD class="Item">7-Zip 32ビットWindows用</TD>
+  </TR>
+  <TR>
+    <TD class="Item"><A href="https://ja.osdn.net/dl/sevenzip/7z1900-x64.exe/" target="_blank">ダウンロード</A></TD>
+    <TD class="Item">.exe</TD>
+    <TD class="Item">64ビット x64</TD>
+    <TD class="Item">7-Zip 64ビットWindows x64(Intel 64 or AMD64)用</TD>
+  </TR>
+  <TR>
+    <TD class="Item"><A href="https://ja.osdn.net/dl/sevenzip/7z1900-extra.7z/" target="_blank">ダウンロード</A></TD>
+    <TD class="Item">.7z</TD>
+    <TD class="Item">x86 / x64</TD>
+    <TD class="Item">7-Zip Extra: コマンドラインバージョン、7z形式のライブラリ、FAR Manager用のプラグイン</TD>
+  </TR>
+  <TR>
+    <TD class="Item"><A href="https://ja.osdn.net/dl/sevenzip/7z1900-src.7z/" target="_blank">ダウンロード</A></TD>
+    <TD class="Item">.7z</TD>
+    <TD class="Item">Any</TD>
+    <TD class="Item">7-Zip ソースコード</TD>
+  </TR>
+  <TR>
+    <TD class="Item"><A href="https://ja.osdn.net/dl/sevenzip/lzma1900.7z/" target="_blank">ダウンロード</A></TD>
+    <TD class="Item">.7z</TD>
+    <TD class="Item">Any / x86 / x64</TD>
+    <TD class="Item">LZMA SDK: (C, C++, C#, Java)</TD>
+  </TR>
+  <TR>
+    <TD class="Item"><A href="https://ja.osdn.net/dl/sevenzip/7z1900.msi/" target="_blank">ダウンロード</A></TD>
+    <TD class="Item">.msi</TD>
+    <TD class="Item">32ビット x86</TD>
+    <TD class="Item">(MSIインストーラ)7-Zip 32ビットWindows用</TD>
+  </TR>
+  <TR>
+    <TD class="Item"><A href="https://ja.osdn.net/dl/sevenzip/7z1900-x64.msi/" target="_blank">ダウンロード</A></TD>
+    <TD class="Item">.msi</TD>
+    <TD class="Item">64ビット x86</TD>
+    <TD class="Item">(MSIインストーラ)7-Zip 64ビットWindows x64(Intel 64 or AMD64)用</TD>
+  </TR>
+</TABLE>
+<BR>
+<P><B>7-Zip 21.04 alpha (2021-11-02)のダウンロード</B>:</P>  
+<TABLE>
+  <TR>
+    <TH class="Title" align="center">リンク</TH>
+    <TH class="Title" align="center">タイプ</TH>
+    <TH class="Title" align="left">システム</TH>
+    <TH class="Title" align="center">概要</TH>
+  </TR>
+  <TR>
+    <TD class="Item" align="center"><A href="https://www.7-zip.org/a/7z2104-x64.exe">ダウンロード</A></TD>
+    <TD class="Item" align="center">.exe</TD>
+    <TD class="Item" align="left">64ビット Windows x64</TD>
+    <TD class="Item" rowspan=3>7-Zip Windows版</TD>
+  </TR>
+  <TR>
+    <TD class="Item" align="center"><A href="https://www.7-zip.org/a/7z2104.exe">ダウンロード</A></TD>
+    <TD class="Item" align="center">.exe</TD>
+    <TD class="Item" align="left">32ビット Windows x86</TD>
+  </TR>
+  <TR>
+    <TD class="Item" align="center"><A href="https://www.7-zip.org/a/7z2104-arm64.exe">ダウンロード</A></TD>
+    <TD class="Item" align="center">.exe</TD>
+    <TD class="Item" align="left">64ビット Windows arm64</TD>
+  </TR>
+  <TR>
+    <TD class="Item" align="center"><A href="https://www.7-zip.org/a/7z2104-x64.msi">ダウンロード</A></TD>
+    <TD class="Item" align="center">.msi</TD>
+    <TD class="Item" align="left">64ビット Windows x64</TD>
+    <TD class="Item">(alternative MSI installer) 7-Zip for 64ビット Windows x64 (Intel 64 or AMD64)</TD>
+  </TR>
+  <TR>
+    <TD class="Item" align="center"><A href="https://www.7-zip.org/a/7z2104.msi">ダウンロード</A></TD>
+    <TD class="Item" align="center">.msi</TD>
+    <TD class="Item" align="left">32ビット Windows x86</TD>
+    <TD class="Item">(alternative MSI installer) 7-Zip for 32ビット Windows</TD>
+  </TR>
+  <TR>
+    <TD class="Item" align="center"><A href="https://www.7-zip.org/a/7z2104-extra.7z">ダウンロード</A></TD>
+    <TD class="Item" align="center">.7z</TD>
+    <TD class="Item" align="left">Windows x86 / x64</TD>
+    <TD class="Item">7-Zip Extra: コンソール板, 7z DLL, Plugin for Far Manager</TD>
+  </TR>
+  <TR>
+    <TD class="Item" align="center"><A href="https://www.7-zip.org/a/7z2104-linux-x64.tar.xz">ダウンロード</A></TD>
+    <TD class="Item" align="center">.tar.xz</TD>
+    <TD class="Item" align="left">64ビット Linux x86-64</TD>
+    <TD class="Item" rowspan=3>7-Zip for Linux: コンソール板</TD>
+  </TR>
+  <TR>
+    <TD class="Item" align="center"><A href="https://www.7-zip.org/a/7z2104-linux-x86.tar.xz">ダウンロード</A></TD>
+    <TD class="Item" align="center">.tar.xz</TD>
+    <TD class="Item" align="left">32ビット Linux x86</TD>
+  </TR>
+  <TR>
+    <TD class="Item" align="center"><A href="https://www.7-zip.org/a/7z2104-linux-arm64.tar.xz">ダウンロード</A></TD>
+    <TD class="Item" align="center">.tar.xz</TD>
+    <TD class="Item" align="left">64ビット Linux arm64</TD>
+  </TR>
+  <TR>
+    <TD class="Item" align="center"><A href="https://www.7-zip.org/a/7z2104-mac.tar.xz">ダウンロード</A></TD>
+    <TD class="Item" align="center">.tar.xz</TD>
+    <TD class="Item" align="left">macOS (arm64 / x86-64)</TD>
+    <TD class="Item" align="left">7-Zip for MacOS: コンソール板</TD>
+  </TR>
+  <TR>
+    <TD class="Item" align="center"><A href="https://www.7-zip.org/a/7z2104-src.7z">ダウンロード</A></TD>
+    <TD class="Item" align="center">.7z</TD>
+    <TD class="Item" align="left">any / Windows</TD>
+    <TD class="Item">7-Zip ソースコード</TD>
+  </TR>
+  <TR>
+    <TD class="Item" align="center"><A href="https://www.7-zip.org/a/lzma2104.7z">ダウンロード</A></TD>
+    <TD class="Item" align="center">.7z</TD>
+    <TD class="Item" align="left">any / Windows</TD>
+    <TD class="Item">LZMA SDK: (C, C++, C#, Java)</TD>
+  </TR>
+</TABLE>
+
+
+<BR>
+<P><B>圧縮・解凍ソフト7-Zip 16.04 (2016-10-04) Windows版のダウンロード</B>:</P>  
+<TABLE>
+  <TR>
+    <TH class="Title">リンク</TH>
+    <TH class="Title">タイプ</TH>
+    <TH class="Title">Windows</TH>
+    <TH class="Title">概要</TH>
+  </TR>
+  <TR>
+    <TD class="Item"><A href="https://ja.osdn.net/projects/sevenzip/downloads/66539/7z1604.exe/" target="_blank">ダウンロード</A></TD>
+    <TD class="Item">.exe</TD>
+    <TD class="Item">32ビット x86</TD>
+    <TD class="Item">7-Zip 32ビットWindows用</TD>
+  </TR>
+  <TR>
+    <TD class="Item"><A href="https://ja.osdn.net/projects/sevenzip/downloads/66539/7z1604-x64.exe/" target="_blank">ダウンロード</A></TD>
+    <TD class="Item">.exe</TD>
+    <TD class="Item">64ビット x64</TD>
+    <TD class="Item">7-Zip 64ビットWindows x64(Intel 64 or AMD64)用</TD>
+  </TR>
+  <TR>
+    <TD class="Item"><A href="https://ja.osdn.net/projects/sevenzip/downloads/66539/7z1604-extra.7z/" target="_blank">ダウンロード</A></TD>
+    <TD class="Item">.7z</TD>
+    <TD class="Item">x86 / x64</TD>
+    <TD class="Item">7-Zip Extra: コマンドラインバージョン、7z形式のライブラリ、FAR Manager用のプラグイン</TD>
+  </TR>
+  <TR>
+    <TD class="Item"><A href="https://ja.osdn.net/projects/sevenzip/downloads/66539/7z1604-src.7z/" target="_blank">ダウンロード</A></TD>
+    <TD class="Item">.7z</TD>
+    <TD class="Item">Any</TD>
+    <TD class="Item">7-Zip ソースコード</TD>
+  </TR>
+  <TR>
+    <TD class="Item"><A href="https://ja.osdn.net/projects/sevenzip/downloads/66540/lzma1604.7z/" target="_blank">ダウンロード</A></TD>
+    <TD class="Item">.7z</TD>
+    <TD class="Item">Any / x86 / x64</TD>
+    <TD class="Item">LZMA SDK: (C, C++, C#, Java)</TD>
+  </TR>
+  <TR>
+    <TD class="Item"><A href="https://ja.osdn.net/projects/sevenzip/downloads/66539/7z1604.msi/" target="_blank">ダウンロード</A></TD>
+    <TD class="Item">.msi</TD>
+    <TD class="Item">32ビット x86</TD>
+    <TD class="Item">(MSIインストーラ)7-Zip 32ビットWindows用</TD>
+  </TR>
+  <TR>
+    <TD class="Item"><A href="https://ja.osdn.net/projects/sevenzip/downloads/66539/7z1604-x64.msi/" target="_blank">ダウンロード</A></TD>
+    <TD class="Item">.msi</TD>
+    <TD class="Item">64ビット x86</TD>
+    <TD class="Item">(MSIインストーラ)7-Zip 64ビットWindows x64(Intel 64 or AMD64)用</TD>
+  </TR>
+</TABLE>
+<BR>
+<P><B>圧縮・解凍ソフト7-Zip 9.20(2010-11-18) Windows版のダウンロード</B>:</P>  
+<TABLE>
+  <TR>
+    <TH class="Title">リンク</TH>
+    <TH class="Title">タイプ</TH>
+    <TH class="Title">Windows</TH>
+    <TH class="Title">概要</TH>
+  </TR>
+  <TR>
+    <TD class="Item"><A href="https://ja.osdn.net/projects/sevenzip/downloads/64455/7z920.exe/" target="_blank">ダウンロード</A></TD>
+    <TD class="Item">.exe</TD>
+    <TD class="Item" rowspan=2>32ビット x86</TD>
+    <TD class="Item" rowspan=2>7-Zip 32ビットWindows用</TD>
+  </TR>
+  <TR>
+    <TD class="Item"><A href="https://ja.osdn.net/projects/sevenzip/downloads/64455/7z920.msi/" target="_blank">ダウンロード</A></TD>
+    <TD class="Item">.msi</TD>
+  </TR>
+  <TR>
+    <TD class="Item"><A href="https://ja.osdn.net/projects/sevenzip/downloads/64455/7z920-x64.msi/" target="_blank">ダウンロード</A></TD>
+    <TD class="Item">.msi</TD>
+    <TD class="Item">64ビット x64</TD>
+    <TD class="Item">7-Zip 64ビットWindows x64 (Intel 64 or AMD64)用</TD>
+  </TR>
+  <TR>
+    <TD class="Item"><A href="https://ja.osdn.net/projects/sevenzip/downloads/64455/7z920-x64.msi/" target="_blank">ダウンロード</A></TD>
+    <TD class="Item">.msi</TD>
+    <TD class="Item">IA-64</TD>
+    <TD class="Item">7-Zip for Windows IA-64(Itanium)</TD>
+  </TR>
+  <TR>
+    <TD class="Item"><A href="https://ja.osdn.net/projects/sevenzip/downloads/64455/7z920-arm.exe/" target="_blank">ダウンロード</A></TD>
+    <TD class="Item">.exe</TD>
+    <TD class="Item">ARM-WinCE</TD>
+    <TD class="Item">7-Zip Windows Mobile / Windows CE (ARM)用</TD>
+  </TR>
+  <TR>
+    <TD class="Item"><A href="https://ja.osdn.net/projects/sevenzip/downloads/64455/7za920.zip/" target="_blank">ダウンロード</A></TD>
+    <TD class="Item">.zip</TD>
+    <TD class="Item">32ビット</TD>
+    <TD class="Item">7-Zip コマンドラインバージョン</TD>
+  </TR>
+  <TR>
+    <TD class="Item"><A href="https://ja.osdn.net/projects/sevenzip/downloads/64455/7z920.tar.bz2/" target="_blank">ダウンロード</A></TD>
+    <TD class="Item">.tar.bz2</TD>
+    <TD class="Item">Any</TD>
+    <TD class="Item">7-Zip ソースコード</TD>
+  </TR>
+  <TR>
+    <TD class="Item"><A href="https://ja.osdn.net/projects/sevenzip/downloads/64455/7z920_extra.7z/" target="_blank">ダウンロード</A></TD>
+    <TD class="Item">.7z</TD>
+    <TD class="Item">32ビット</TD>
+    <TD class="Item">7-Zip Extra: 7z形式のライブラリ、インストーラ用のSFXモジュール、FAR Manager用のプラグイン</TD>
+  </TR>
+  <TR>
+    <TD class="Item"><A href="https://ja.osdn.net/projects/sevenzip/downloads/64469/lzma920.tar.bz2/" target="_blank">ダウンロード</A></TD>
+    <TD class="Item">.tar.bz2</TD>
+    <TD class="Item">Any</TD>
+    <TD class="Item">LZMA SDK (C, C++, C#, Java)</TD>
+  </TR>
+</TABLE>
+<P>各バージョンの7-Zip（最新のbeta版を含む）はSourceForgeからダウンロードできます。</P>
+
+<P><A href="https://sourceforge.net/projects/sevenzip/files/">SourceForge.netの7-Zipファイル</A></P>
+<P><A href="https://ja.osdn.net/projects/sevenzip/releases/">OSDNの7-Zipファイル</A></P>
+<P><A href="https://sourceforge.net/projects/sevenzip/">7-Zip at SourceForge.net</A></P>
+<P><A href="https://ja.osdn.net/projects/sevenzip/">7-Zip at OSDN</A></P>
+
+<P><B>p7zip for Linux(Posix) (x86バイナリ＆ソースコード)のダウンロード</B>:</P>
+<P><A href="https://ja.osdn.net/projects/sfnet_p7zip/releases/">p7zipのダウンロード</A></P>
+<P><A href="https://sourceforge.net/projects/p7zip/">p7zip at SourceForge.net</A></P>
+
+<P>p7zipは、Linux/UNIX用の7-Zipのコマンドラインバージョンです。別の開発者が作成しています。</P>
+
+<P><B>LinuxやそのほかのOS向けの、非公式なp7zipパッケージ:</B></P>
+<UL>
+<LI><A href="https://packages.debian.org/unstable/utils/p7zip">p7zip for Debian</A></LI>
+<LI><A href="http://timeoff.wsisiz.edu.pl/rpms.html">p7zip for Fedora Core</A></LI>
+<LI><A href="https://packages.gentoo.org/package/app-arch/p7zip">p7zip for Gentoo</A></LI>
+<LI><A href="http://www.sisyphus.ru/srpm/p7zip">p7zip for AltLinux.org</A></LI>
+<LI><A href="https://www.freshports.org/archivers/p7zip/">p7zip for FreeBSD</A></LI>
+<LI><A href="https://www.keka.io/en/">keka - the free Mac OS X file archiver</A></LI>
+<LI><A href="http://aminet.net/search?name=p7zip">p7zip for Amiga</A></LI>
+<LI><A href="https://www.opencsw.org/packages/p7zip">p7zip for Solaris</A></LI>
+<LI><A href="http://www.perzl.org/aix/index.php?n=Main.P7zip">p7zip for AIX</A></LI>
+</UL>
+
+<P><B>そのほかのOS用7-Zip :</B></P>
+<UL>
+<LI><A href="http://4pda.ru/forum/index.php?showtopic=69426">7-Zip Extracter for WinCE</A></LI>
+</UL>
+
+<HR>
+<P><SMALL>Copyright (C) 2021 Igor Pavlov.</SMALL></P>
+</div>
+</div>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="/script-m.js"></script>
+</BODY></HTML>

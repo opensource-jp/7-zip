@@ -1,0 +1,162 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="canonical" href="https://sevenzip.osdn.jp/faq.html">
+<title>Frequently Asked Questions (FAQ) | 7-Zip</title>
+<meta name="description" content="ユーザー向けFAQと開発者向けFAQを紹介しています。7-Zipをビジネスの場で利用できますか？ 商用アプリケーションで7-ZipのEXEやDLLファイルを利用できますか？ など">
+<meta name="keywords" content="アーカイバ,圧縮,展開,解凍,フリー,無料,日本語,7z,lzma,7-zip,faq">
+<link rel="stylesheet" type="text/css" href="/style-m.css">
+</head>
+<BODY>
+<div id="body-inner">
+<div id="sidebar">
+<a href="https://sevenzip.osdn.jp/" id="sitelogo"><img width="110" height="63" src="/7ziplogo.png" alt="7-Zip"></a>
+<hr>
+<ul>
+<li><a href="https://sevenzip.osdn.jp/" class="MenuLink">ホーム</a>
+<li><a href="https://sevenzip.osdn.jp/7z.html" class="MenuLink">7zファイル</a>
+<li><a href="https://sevenzip.osdn.jp/sdk.html" class="MenuLink">LZMA SDK</a>
+<li><a href="https://sevenzip.osdn.jp/download.html" class="MenuLink">ダウンロード</a>
+<li><a href="https://sevenzip.osdn.jp/faq.html" class="MenuLink current">FAQ</a>
+<li><a href="https://sevenzip.osdn.jp/support.html" class="MenuLink">サポート</a>
+<li><a href="https://sevenzip.osdn.jp/links.html" class="MenuLink">リンク</a>
+</ul>
+<hr>
+<P id="language"></P>
+<ul>
+<li><a href="https://sevenzip.osdn.jp/chm/start.htm">ヘルプ</a>
+<li><a href="https://sevenzip.osdn.jp/chm/cmdline/syntax.htm">command line</a>
+</ul>
+</div>
+<div id="contents">
+<H1>Frequently Asked Questions (FAQ)</H1>
+
+<UL>
+  <LI><A href="#user_faq">ユーザー向けFAQ</A></LI>
+  <LI><A href="#developer_faq">開発者向けFAQ</A></LI>
+</UL>
+
+<H2><a name="user_faq"></a>ユーザー向けFAQ</H2>
+
+<H4>7-Zipをビジネスの場で利用できますか？</H4>
+<P>はい。7-Zipはフリーソフトウェアです。どのコンピュータでも利用できます。7-Zipのために、登録や支払いは必要ありません。</P>
+
+<H4>Windows 7やWindows Vistaの環境で、7-Zipにファイルの関連付けを行うにはどうすればいいですか？</H4>
+<P>7-Zip File Managerを管理者モードで起動させる必要があります。7-Zip File Managerのアイコンを右クリックして、「管理者として実行」をクリックしてください。これで起動すれば、ファイルの関連付けやそのほかのオプションを変更できます。</P>
+
+<h4>新しいバージョンの7-Zipで圧縮した7zファイルは、どうして古いバージョンの7-Zipで圧縮したファイルより大きいのですか？</h4>
+<p>
+新しいバージョンの7-Zip（バージョン15.06以降）は、「solid」モードの7zアーカイブ（圧縮ファイル）を作成する際、デフォルトで異なるソート順を使っているためです。
+</p>
+<p>古いバージョンの7-Zip (バージョン15.06より前)は、拡張子でファイルをソートしています。</p>
+<p>新しいバージョンの7-Zipは2つのソート順を利用できます。</p>
+<ul>
+  <li>ファイル名でソート（デフォルトの順番）</li>
+  <li>拡張子でソート。ファイル圧縮のダイアログの<b>パラメータ</b>の欄で'<b>qs</b>'を指定した場合（もしくはコマンドラインバージョンで「<b>-mqs</b>」スイッチを指定した場合</li>
+</ul>
+<p>
+ファイルサイズ合計より辞書サイズが小さい場合、ソーティング方法の違いが圧縮率に大きな影響を与えます。異なるフォルダに似たファイルが存在するようないくつかのケースでは、拡張子によるソートのほうが良い圧縮率になります。
+</p>
+<p>
+拡張子によるソートにはいくつかの欠点があることに留意してください。たとえば、NTFSのファイルシステムではファイル名でソートしています。そのため、圧縮ファイルでファイル名ソート以外のソーティング方法を利用していた場合、いくつかファイル操作において想定と異なるソーティングがあることによってHDD上の性能が悪化します（HDDはシークが発生する処理が遅い）。
+</p>
+<p>
+圧縮率を向上させるには以下の手段が取ることができます：
+</p>
+<ul>
+  <li>辞書サイズを大きくする。'qs'のパラメータを使わない場合に役立つ
+  <li>パラメータに'qs'を指定する (もしくはコマンドラインバージョンで「-mqs」スイッチを使う）
+</ul>
+<p>
+もし、想定しないファイルの順番が利用上の問題にならず、小さい辞書サイズでより良い圧縮率を得ることが重要と考えられる場合は、'qs'のモードを使ってください。
+</p>
+
+<H4>なぜ7-ZipではいくつかのZIP圧縮ファイルを開けないのですか？</H4>
+<P>そのような問題の99%は、そのアーカイブのヘッダーが間違っているためです。ほかのZIPプログラムは、間違ったヘッダーでもエラーを出力するだけで開いています。</P>
+<P>もしそのようなアーカイブであったら、7-Zipの開発者に問い合わせないでください。その代りに、その間違ったヘッダーのアーカイブを作ったプログラムを特定し、その作者にZIPと互換がないことを教えてあげてください。</P>
+<P>一方で、たとえばWAVPack (WinZip)のような、7-Zipでサポートしていない方法でエンコードされたZIPアーカイブもあります。</P>
+
+<h4>なぜ7-ZipでいくつかのRAR圧縮ファイルが開けないのですか？</H4>
+<P>7-Zip 9.20はRAR 2/3/4フォーマットの圧縮ファイルのみをサポートしており、RAR 5.0フォーマットの圧縮ファイルをサポートしていません。しかしながら、最新版7-Zipでは、RAR 5.0フォーマットの圧縮ファイルをサポートしています。</P>
+
+<H4>7-Zipからエクスプローラへのドラッグ＆ドロップで圧縮ファイルを解凍するとき、なぜテンポラリファイルを使うのですか？</H4>
+<P>7-Zipは、ドロップターゲットのフォルダパスがわからないからです。Windowsのエクスプローラだけが正しいドロップターゲットを知っています。そして、Windowsのエクスプローラは、ディスク上に展開されたファイル（ドラッグソース）を必要とします。そのため、7-Zipはアーカイブからテンポラリフォルダにファイルを展開し、そして7-ZipはWindowsのエクスプローラにそのテンポラリファイルをのパスを知らせます。それからWindowsのエクスプローラは、それらのファイルをドロップターゲットのフォルダにコピーします。</P>
+<P>テンポラリファイルを使いたくない場合は、7-Zipの展開コマンドか、7-Zipから7-Zipへドラッグ＆ドロップしてください。</P>
+
+<H4>コマンドラインバージョンは、なぜ拡張子なしのファイルを追加しないのでしょうか？</H4>
+<P>「*.*」のワイルドカードを使っているのではないでしょうか。7-ZipはOS側のワイルドカードマスクパーサーを使っていないので、「*.*」は拡張子のある任意のファイルとなります。つまり任意のファイルを処理するには、代わりに「*」を使うか、ワイルドカードを省略する必要があります。
+</P>
+
+<H4>なぜ「-r」オプションは予想どおりに機能しないのですか？</H4>
+<P>多くの場合、「-r」オプションは必要ありません。7-Zipは、「-r」オプションがなくてもサブフォルダまで圧縮できます。
+<P>Example 1:</P>
+<PRE>  7z.exe a c:\a.7z "C:\Program Files"</PRE>
+<P>すべてのサブフォルダも含め、「C:\Program Files」を完全に圧縮します。
+<P>Example 2:</P>
+<PRE>  7z.exe a -r c:\a.7z "C:\Program Files"</PRE>
+<P>C:\のサブフォルダ（たとえばC:\WINDOWS）から「Program Files」を検索し、圧縮します。</P>
+<P>もし、なんらかの拡張子の付いたファイルのみを圧縮したい場合は、「-r」オプションを使ってください。</P>
+<PRE>  7z a -r c:\a.zip c:\dir\*.txt </PRE>
+<P>c:\dir\フォルダとそのサブフォルダにある、すべての*.txtファイルを圧縮します。</P>
+
+<H4>圧縮ファイルの中でファイルのフルパスを保持するにはどのようにすればいいですか？</H4>
+<P>7-Zipはファイルの相対パスのみを（前置されるドライブレターなしで）保存します。一般に行われているように、カレントフォルダを、圧縮したいすべてのファイルを参照できるフォルダに変更して、相対パスを使ってください。
+</P>
+<PRE>
+  cd /D C:\dir1\
+  7z.exe a c:\a.7z file1.txt dir2\file2.txt
+</PRE>
+
+<H4>32ビットのWindowsおいて、7-Zipは大きい辞書が使えないのですか？</H4>
+<P>32ビットのWindowsは、アプリケーションごとに2GBしか仮想メモリが割り当てられません。しかも、その2GBの領域は連続していないため（たとえばいくつかのDLLによって）、7-Zipは仮想メモリ上に1つの大きな連続領域を確保できません。64ビットWindowsであればこの制限はありません。そのため、大量の物理メモリさえあれば、Windows x64で任意の辞書を利用できます。</P>
+
+<H4>どのようにすると、7-Zipをサイレントモードでインストールできますか？</H4>
+<P>exe形式のインストーラの場合：サイレントインストールをするには「/S」パラメータを使います。「/D="C:\Program Files\7-Zip"」パラメータを使うと、出力ディレクトリを指定できます。このオプションは大文字小文字を区別します。</P>
+<P>msiインストーラの場合：「/q INSTALLDIR="C:\Program Files\7-Zip"」というパラメータを使います。</P>
+
+<H4>壊れた7zファイルはどのように修復できますか？</H4>
+<P>圧縮ファイルが壊れているとき、いくつかのケースでは修復できます。
+<UL>
+ <LI>圧縮ファイルが開け、ファイルリストも閲覧できるが、展開やテストが実行しようとすると、データエラーやCRCエラーが表示される場合
+ <LI>圧縮ファイルを開いたとき、「'a.7z'が圧縮ファイルとして開けません」のようなメッセージが表示される場合
+</UL>
+
+<P>これらの場合、いくつかのデータは修復可能です。以下の修復手順を参照してください。
+<P><A href="http://www.7-zip.org/recover.html">壊れた7z圧縮ファイルの修復方法</A>（http://www.7-zip.org/recover.html）</P>
+
+<BR>
+<BR>
+<H2><a name="developer_faq"></a>開発者向けFAQ</H2>
+
+<H4>Visual C++ 6.0で7-ZipやLZMA SDKをコンパイルすると、なぜリンクエラーが出るのですか？</H4>
+
+<P>コンパイルにはVisual C++ 6.0かそれ以上のバージョンに加え、microsoft.comのPlatform SDKを含むいくつかのファイルが必要です。</P>
+
+<P>MSVCを使っている場合、SDKのディレクトリを「Include files」と「Library files」のディレクトリリストの先頭で指定してください。</P>
+<P>最新のPlatform SDKはMSVC6と互換性がありません。そのため、MSVC6には、Windows Server 2003 PSDK (February 2003) を利用しなければなりません。</P>
+
+<H4>商用アプリケーションで7-ZipのEXEやDLLファイルを利用できますか？</H4>
+
+<P>はい。ただし、そのドキュメントに (1) それは7-Zipのプログラムの一部であり、(2)7-ZipはGNU LGPLのライセンスであることと、(3)www.7-zip.orgへリンクを張るなど、ソースコードの入手元を示す必要があります。</P>
+
+<H4>7zアーカイブへの対応を自分のアプリケーションに加えるにはどのようにすればいいでしょうか？</H4>
+
+<P>1つは、7z.dllもしくは7za.dll（sf.netからダウンロードできます）を使う方法です。7za.dllはCOMインターフェイスで動作します。ただし、オブジェクトの作成はスタンダードCOMインターフェイスではありません。ソースコードのCPP\7zip\UI\Client7zフォルダの中に簡単な例があります。完全な例は7-Zip自体です。7-ZipもこのDLLを使っています。Win<a class="bl" href="https://sevenzip.osdn.jp/howto/rar-extract.html">RAR</a>、PowerArchiverなど、そのほかのアプリケーションでも7za.dllの利用例はあります。</P>
+
+<P>そのほかの方法としては、コマンドラインバージョンの7za.exeの利用があります。</P>
+
+<H4>7-Zipのソースコードを商用アプリケーションで利用できますか？</H4>
+
+<P>7-ZipのライセンスはGNU LGPLのため、以下のルールに従う必要があります。
+要約すると、LGPLのコードの部分はLGPLのライセンスになります。そのため、7-Zipのコード修正や、7-Zipのコードからいくつかラッパーを作成し、DLLにコンパイルできます。一方で、その（修正や追加、作成したラッパーが含まれる）DLLのコードはLGPLかGPLのライセンスにする必要があります。そのほかのアプリケーションのコードは、任意のライセンスにすることができます。
+このようにすることによって、ユーザーや開発者はLGPLのコードを修正したり、DLLにリコンパイルできるようになります。この考えがフリーソフトウェアです。詳しくは、<A href="https://www.gnu.org/">https://www.gnu.org/</A>を参照してください。また、<a href="https://sevenzip.osdn.jp/sdk.html">LZMA SDK</a>も参照してください。これには、ほかにもライブラリライセンスがあります。</P>
+
+<HR>
+<P><SMALL>Copyright (C) 2019 Igor Pavlov. <br>
+This japanese site is maintained by <a href="https://opensource.jp/">Open Source Group Japan</a>.
+</SMALL></P>
+</div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript" src="/script-m.js"></script>
+</BODY></HTML>
+

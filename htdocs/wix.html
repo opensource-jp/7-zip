@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<META http-equiv="CONTENT-TYPE" content="TEXT/HTML; CHARSET=UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<LINK rel="canonical" href="https://sevenzip.osdn.jp/wix.html">
+<TITLE>WIX build</TITLE>
+</HEAD>
+<BODY>
+<h1>sample of multi language installer</h1>
+I think that this isn't perfect yet...<br>
+
+<a href="http://osdn.jp/projects/sevenzip/downloads/47974/7zip91502_multi.msi/">7zip91502_multi.msi (sf.jp)</a><br>
+<a href="/files/7zip91502_multi.msi">7zip91502_multi.msi (local web)</a><br>
+
+note: This binary is not original, 32bit binary, build by VC2010, set NEW_COMPILER=1,
+ and font size = 9pt in GuiCommon.rc(it's my favorite env), build id has been increased to 9.15.2 .
+<br><br>
+Making procedure:
+<ol>
+<li>install WIX 3.0 and Microsoft SDK v7.0(WiSubStg.vbs and WiLangId.vbs), set path for these programs
+<li>set installed file tree(SourceDir\File\7-Zip)
+<li>run msibuild.bat
+<li>run msimarge.bat(set product=7zip; set version=915 in msibuild.bat)
+<li>output: build\%product%%version%_multi.msi(build\ is temp folder)
+</ol>
+<br>
+Working files:
+<a href="/files/wixbuildkit.zip">wixbuildkit.zip</a>
+<ul>
+<li>7zip915.wxs: modify for wix 3.0, based on doc\7zip.wxs and add a removing .chw file
+<li>FM.ico:from org src
+<li>Banner.bmp: top banner
+<li>Dialog.bmp: left banner
+<li>lisence.rtf: from original installer
+<li>build.bat: make each language .msi and .mst
+<li>msimarge.bat : run WiSubStg.vbs and WiLangId.vbs(Windows SDK)
+</ul>
+
+</body>
+</html>
+

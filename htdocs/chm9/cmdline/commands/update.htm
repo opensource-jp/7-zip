@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+  <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+  <TITLE>u (Update) command</TITLE>
+  <LINK href="style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-6708582-1', 'auto');
+document.pagegroup='other';
+</script>
+</HEAD>
+<BODY>
+<div class="navlink"><a href="https://sevenzip.osdn.jp/">7-Zip</a></div>
+<H1>u (Update) command</H1>
+
+<P>Update older files in the archive and add files that are not already in the archive.</P>
+
+<P>Note: the updating of solid .7z archives can be slow, since it 
+can require some recompression.</P>
+
+<H4>Example</H4>
+
+<PRE class="example">
+7z u archive.zip *.doc
+</PRE>
+
+<P>updates <SPAN class="filename">*.doc</SPAN> files to archive
+    <SPAN class="filename">archive.zip</SPAN>.</P>
+
+
+<H4>Notes</H4>
+
+<P>7-Zip doesn't uses the system wildcard parser. 7-Zip doesn't
+follow the archaic rule by which *.* means any file. 7-Zip treats
+*.* as matching the name of any file that has an extension. To process 
+all files, you must use a * wildcard.</P>
+
+
+<H4>Switches that can be used with this command</H4>
+
+<P>
+  <A href="../switches/include.htm">-i (Include)</A><BR>
+  <A href="../switches/method.htm">-m (Method)</A><BR>
+  <A href="../switches/password.htm">-p (Set Password)</A><BR>
+  <A href="../switches/recurse.htm">-r (Recurse)</A><BR>
+  <A href="../switches/sfx.htm">-sfx (create SFX)</A><BR>
+  <A href="../switches/stdin.htm">-si (use StdIn)</A><BR>
+  <A href="../switches/stdout.htm">-so (use StdOut)</A><BR>
+  <A href="../switches/shared.htm">-ssw (Compress shared files)</A><BR>
+  <A href="../switches/type.htm">-t (Type of archive)</A><BR>
+  <A href="../switches/update.htm">-u (Update)</A><BR>
+  <A href="../switches/working_dir.htm">-w (Working Dir)</A><BR>
+  <A href="../switches/exclude.htm">-x (Exclude)</A>
+</P>
+
+<H4>See also</H4>
+
+<P>
+  <B>Commands:</B> 
+  <A href="add.htm">a (Add)</A>,
+  <A href="delete.htm">d (Delete)</A>,
+</P>
+
+<P>
+  <B>Switches:</B>
+  <A href="../switches/update.htm">-u (Update)</A>
+</P>
+<div id="gpt-of7" class="leaderboard"></div>
+<div id="fb-root"></div>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="https://sevenzip.osdn.jp/script.js"></script>
+</BODY>
+</HTML>

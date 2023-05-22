@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+  <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+  <TITLE>-slp (Set Large Pages mode) switch</TITLE>
+  <LINK href="style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-6708582-1', 'auto');
+document.pagegroup='other';
+</script>
+</HEAD>
+<BODY>
+<div class="navlink"><a href="https://sevenzip.osdn.jp/">7-Zip</a></div>
+<H1>-slp (Set Large Pages mode) switch</H1>
+
+<P>Sets Large Pages mode.</P>
+
+<H4>Syntax</H4>
+
+<PRE class="syntax">
+-slp[-]
+</PRE>
+
+
+<TABLE>
+  <TR><TH width="80">Switch</TH> <TH>Description</TH></TR>
+  <TR><TD>-slp</TD> <TD>Enables Large Pages mode.</TD></TR>
+  <TR><TD>-slp-</TD> <TD>Disables Large Pages mode. This option is default for all commands.</TD></TR>
+</TABLE>
+
+<P> Large Pages mode increases the speed of compression.
+However, there is a pause at the start of compression while 7-Zip allocates the large pages in memory.
+If 7-Zip can't allocate large pages, it allocates usual small pages.
+Also, the Windows Task Manager doesn't show the real memory usage of the program, if 7-Zip uses large pages.
+This feature works only on Windows 2003 / XP x64. 
+Also, it requires administrator's rights for your system.
+The recommended size of RAM for this feature is 3 GB or more.
+To install this feature, you must run the 7-Zip File Manager at least once, 
+close it, and then reboot the system. </P>
+
+<P> <B>Notes: if you use -slp mode, your Windows system can hang for several 
+    seconds when 7-zip allocates memory blocks</B>. 
+
+When Windows tries to allocate large pages from RAM for 7-Zip, Windows can hang other tasks for that time. 
+It can look like full system hang, but then it resumes, and if allocation is successful, 7-Zip works faster.
+Don't use -slp mode, if you don't want other tasks be hanged for several seconds.
+Also it's senseless to use -slp mode to compress small data sets (less than 100 MB).
+But if you compress big data sets (300 MB or more) with LZMA method with large dictionary,
+you can get 5%-10% speed improvement with -slp mode.</P>
+
+
+
+<H4>Example</H4>
+
+<PRE class="example">
+7z a archive.7z -slp a.iso
+</PRE>
+
+<P>compresses <SPAN class="filename">a.iso</SPAN> file with Large Pages mode switched on.</P>
+<div id="gpt-of7" class="leaderboard"></div>
+<div id="fb-root"></div>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="https://sevenzip.osdn.jp/script.js"></script>
+</BODY>
+</HTML>

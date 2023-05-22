@@ -1,0 +1,121 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8">
+<title>異なる圧縮形式、多数の圧縮ファイルをまとめて7z形式などに変換 | 7-Zip</title>
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="canonical" href="https://sevenzip.osdn.jp/howto/">
+<link rel="stylesheet" type="text/css" href="https://sevenzip.osdn.jp/style-howto.css">
+</head><body>
+<div id="body-inner">
+<div id="sidebar">
+<a href="https://sevenzip.osdn.jp/" id="sitelogo"><img width="110" height="63" src="/7ziplogo.png" alt="7-Zip"></a>
+<hr>
+<ul>
+<li><a href="https://sevenzip.osdn.jp/" class="MenuLink">ホーム</a>
+<li><a href="https://sevenzip.osdn.jp/7z.html" class="MenuLink">7zファイル</a>
+<li><a href="https://sevenzip.osdn.jp/sdk.html" class="MenuLink">LZMA SDK</a>
+<li><a href="https://sevenzip.osdn.jp/download.html" class="MenuLink">ダウンロード</a>
+<li><a href="https://sevenzip.osdn.jp/faq.html" class="MenuLink">FAQ</a>
+<li><a href="https://sevenzip.osdn.jp/support.html" class="MenuLink">サポート</a>
+<li><a href="https://sevenzip.osdn.jp/links.html" class="MenuLink">リンク</a>
+</ul>
+<hr>
+<ul>
+<li><a href="https://sevenzip.osdn.jp/howto/">日本語howto</a>
+<li><a href="https://sevenzip.osdn.jp/chm/start.htm">ヘルプ</a>
+</ul>
+</div>
+<div id="contents">
+<h1>複数圧縮形式、複数圧縮ファイルをまとめて7z形式などに変換</h1>
+<div class="fright1"> 
+</div>
+<p>
+昔のLZH形式の圧縮ファイルをすべてZIPファイルに変換しておきたい、HDD容量を確保するためにLZHやZIP、RARや7zなどのファイルをまとめて7z形式の超圧縮で保存しておきたいというときなどには、7-Zipのコマンドが役に立ちます。バッチファイルで再帰的にファイルを検索しながら実行することで、一括再圧縮が可能になります。
+</p>
+<h2>対象の圧縮ファイルを確認する</h2>
+<p>
+バッチファイルで対象ファイルを抽出するにはforコマンドを使うのが簡単です。メモ帳などのテキストエディタで次のようなスクリプトを記述し、～.batというファイル名で保存します。
+</p>
+<pre>
+@echo off 
+for /R %%i in (*) do  (
+  if /I "%%~xi"==".zip" call :再圧縮 %%i
+  if /I "%%~xi"==".lzh" call :再圧縮 %%i
+  if /I "%%~xi"==".rar" call :再圧縮 %%i
+)
+
+PAUSE
+goto :EOF
+
+:再圧縮
+echo %1
+goto :EOF
+</pre>
+<p>
+このバッチファイルを実行すると以下のような表示になります。
+</p>
+<pre>&gt;<strong>for.bat</strong> 
+C:\downloads\a-lzh\data.lzh
+C:\downloads\b-zip\data.zip
+C:\downloads\b-zip\b-sub\data.zip
+続行するには何かキーを押してください . . .
+</pre>
+<p>
+表示されるファイルは、バッチファイルを置いた、もしくは実行したフォルダを起点に、それ以下の階層のファイルすべてが対象です。
+</p>
+<p>
+このBATファイルを簡単に説明すると、まず、「@echo off」で表示されるメッセージを最小限にしています。次にバッチファイルを実行したフォルダ以下にあるファイル一覧を1つずつ取得してループを実行しています。バッチファイルでforコマンドで用いる場合、その変数は「%%」のように記述する必要があるので「%%i」としています。
+</p>
+<p>
+見つかったファイルごと、拡張子がzipもしくはlzh、rarのファイルだったら、「:再圧縮」ラベルのルーチンをcallで呼び出します。「%%~xi」というのは「%%i」の拡張子部分の文字列という意味です。フルパスのファイル名%%iはcallの引数として渡し、「:再圧縮」ルーチンでは%1で受け取れます。それをechoコマンドで表示しているだけです。そして「goto :EOF」でサブルーチンから元のメインルーチンに戻ります。メインルーチンではすべてのファイルの評価が終わると、最後にPAUSEコマンドでいったん停止して、表示を確認できるようにしています。
+</p>
+<div id="gpt-hm7" class="leaderboard"></div>
+<h2>一括再圧縮を実行する</h2>
+<p>
+対象ファイルの選定ができたところで、再圧縮のルーチンで再圧縮処理を追加します。再圧縮の手順は、単純に各ファイルにおいて一度解凍してから圧縮するだけです。基本的には上記の「:再圧縮」ルーチンに展開コマンドと圧縮コマンドを記述すれば完成です。
+</p>
+<pre>
+@echo off
+set exe="C:\Program Files\7-Zip\7z.exe"
+
+for /R %%i in (*) do  (
+rem  if /I "%%~xi"==".7z" call :再圧縮 %%i
+  if /I "%%~xi"==".zip" call :再圧縮 %%i
+  if /I "%%~xi"==".rar" call :再圧縮 %%i
+  if /I "%%~xi"==".lzh" call :再圧縮 %%i
+)
+
+cd %~p0
+goto :EOF
+
+:再圧縮
+echo %1
+cd %~p1
+%exe% x -o$$temp$$ %1 >> NUL
+cd $$temp$$
+%exe% a -t7z -mx=9 -m0=lzma2 %~p1%~n1.7z * >> NUL
+cd ..
+rmdir /S /Q $$temp$$
+if exist %~p1%~n1.7z if not "%~x1"==".7z" del /F /Q %1
+
+goto :EOF
+</pre>
+<p>
+まず、冒頭のexe変数に7z.exeコマンドをフルパスをセットしておきます。
+</p>
+<p>
+サブルーチンでは、処理しているファイルをechoで表示し、cdコマンドで対象ファイルのあるフォルダに作業ディレクトリを移動します。次に、$$temp$$フォルダに（-o）解凍します（x）。「 >> NUL」は7z.exeコマンドが出力する作業中のメッセージをすべて捨てるという意味です。
+</p>
+<p>
+続いて圧縮処理です。cdコマンドで$$temp$$に作業ディレクトリを移動し、そのフォルダに展開されたファイルすべてを圧縮しています。圧縮ファイルのファイル名は、「%~p1%~n1.7z」によって拡張子を7zに変更しています。%~p1が%1のフォルダ部分、%~n1が拡張子を除くファイル名部分です。処理が終わったら、最後に作業フォルダ$$temp$$を削除し、元のファイルも削除しています。元のファイルを削除する際は、念のため、圧縮ファイルが存在しているかだけ調べて、7zから7zへの再圧縮の場合も想定して削除コマンドを実行するようにしています。
+</p>
+<p>
+圧縮時のオプションは、「-t7z」で書庫形式を7zに、「-mx=9」で最大圧縮（超圧縮）、「-m0=lzma2」で最優先（0）の圧縮方式はLZMA2という意味になります。
+</p>
+<p>
+なお上記のバッチファイルや改変したバッチファイルを利用する場合は、適当なフォルダ内で仮想のディレクトリ構造を作ってテストするなど、十分に確認してから実行してください。とくに元ファイルを削除する部分で記述ミスなどあるとファイルを単純に削除してしまうことになってしまいます。delコマンドで削除したファイルはごみ箱には入りません。
+</p>
+<hr>
+<p><small>OSDN Project</small></p> 
+</div>
+</div>
+</body></html>
+

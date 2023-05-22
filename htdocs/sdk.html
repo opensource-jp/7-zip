@@ -1,0 +1,145 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="canonical" href="https://sevenzip.osdn.jp/sdk.html">
+<TITLE>LZMA SDK (Software Development Kit)</TITLE>
+<META name="keywords" content="アーカイバ,圧縮,展開,解凍,フリー,無料,日本語,archiver, compression, zip, best, compress,high, ratio, free, gnu, lgpl, unzip, far, win32, 7zip, long, file, names">
+<link rel="stylesheet" type="text/css" href="/style-m.css">
+</HEAD>
+<BODY>
+<div id="body-inner">
+<div id="sidebar">
+<a href="https://sevenzip.osdn.jp/" id="sitelogo"><img width="110" height="63" src="/7ziplogo.png" alt="7-Zip"></a>
+<hr>
+<ul>
+<li><a href="https://sevenzip.osdn.jp/" class="MenuLink">ホーム</a>
+<li><a href="https://sevenzip.osdn.jp/7z.html" class="MenuLink">7zファイル</a>
+<li><a href="https://sevenzip.osdn.jp/sdk.html" class="MenuLink current">LZMA SDK</a>
+<li><a href="https://sevenzip.osdn.jp/download.html" class="MenuLink">ダウンロード</a>
+<li><a href="https://sevenzip.osdn.jp/faq.html" class="MenuLink">FAQ</a>
+<li><a href="https://sevenzip.osdn.jp/support.html" class="MenuLink">サポート</a>
+<li><a href="https://sevenzip.osdn.jp/links.html" class="MenuLink">リンク</a>
+</ul>
+<hr>
+<P id="language"></P>
+<ul>
+<li><a href="https://sevenzip.osdn.jp/chm/start.htm">ヘルプ</a>
+<li><a href="https://sevenzip.osdn.jp/chm/cmdline/syntax.htm">command line</a>
+</ul>
+</div>
+<div id="contents">
+<H1>LZMA SDK (Software Development Kit)</H1>
+<P><B>LZMA SDK</B>は、<B>LZMA</B>圧縮を利用するアプリケーションの開発に必要な、ドキュメント、サンプル、ヘッダーファイル、ライブラリ、ツールが含まれます。</P>
+
+<TABLE>
+  <TR>
+    <TH class="Title">リンク</TH>
+    <TH class="Title">サイズ</TH>
+    <TH class="Title">日付</TH>
+    <TH class="Title">バージョン</TH>
+    <TH class="Title">概要</TH>
+  </TR>
+  <TR>
+    <TD class="Item" align="center"><A href="https://www.7-zip.org/a/lzma2201.7z" target="_blank">ダウンロード</A></TD>
+    <TD class="Item" align="center">1 MB</TD>
+    <TD class="Item" align="center">2022-07-15</TD>
+    <TD class="Item" align="center">22.01</TD>
+    <TD class="Item" rowspan=3>LZMA SDK<BR>C, C++, C#, Java <BR>x86/x64 binaries for Windows</TD>
+  </TR>
+  <TR>
+    <TD class="Item" align="center"><A href="https://www.7-zip.org/a/lzma1900.7z" target="_blank">ダウンロード</A></TD>
+    <TD class="Item" align="center">1 MB</TD>
+    <TD class="Item" align="center">2019-02-21</TD>
+    <TD class="Item" align="center">19.00</TD>
+  </TR>
+  <TR>
+    <TD class="Item"><A href="https://www.7-zip.org/a/lzma1604.7z" target="_blank">ダウンロード</A></TD>
+    <TD class="Item">1 MB</TD>
+    <TD class="Item">2016-10-04</TD>
+    <TD class="Item">16.04</TD>
+  </TR>
+  <TR>
+    <TD class="Item"><A href="https://www.7-zip.org/a/lzma-specification.7z">ダウンロード</A></TD>
+    <TD class="Item">12 KB</TD>
+    <TD class="Item">2015-06-14</TD>
+    <TD class="Item"></TD>
+    <TD class="Item">LZMA Specification (Draft)</TD>
+  </TR>
+</TABLE>
+
+
+<P><B>変更点:</B>
+<UL>
+  <LI><B>21.07:</B> いくつかのマイナーな変更と修正</LI>
+  <LI><B>21.06:</B> LZMAエンコーディング機能のバグを修正</LI>
+  <LI><B>21.03 beta:</B> LZMAの辞書サイズを4GBへアップ、速度の最適化</LI>
+  <LI><B>21.02 alpha:</B> macOSとLinuxのサポート、速度の最適化</LI>
+  <LI><B>19.00:</B> 7zアーカイブの暗号化強度向上</LI>
+  <LI><B>18.05:</B> LZMA/LZMA2コードにおける処理速度の最適化</LI>
+  <LI><B>18.01:</B> 圧縮時のLZMA2/xzマルチスレッドコードの変更。いくつかのバグ修正。</LI>
+  <LI><B>9.35:</B> AESのコードと、SFXモジュールをSDKに同梱</LI>
+  <LI><B>9.20:</B> インストーラ向けの新しい小型SFXモジュール</LI>
+  <LI><B>9.11:</B> PPMdサポート</LI>
+  <LI><B>9.04:</B> LZMA2とXZのサポート</LI>
+  <LI><B>4.62:</B> LZMA SDKはパブリックドメインとなった</LI>
+</UL>
+
+<P><B>LZMA / LZMA2</B>は、<B>7-Zip</B>プログラムにおける、<A href ="7z.html"><B>7z形式</B></A>の標準かつ一般的な圧縮形式です。
+<B>LZMA</B>は、高圧縮率かつ高速な展開が行えます。そのため、組み込みアプリケーションにとても向いています。たとえば、ROM（ファームウェア）の圧縮に利用できます。</P>
+
+<P><B>LZMA SDK</B>に含まれるもの:</P>
+<UL>
+  <LI><B>LZMA</B>圧縮・展開の<B>C++</B>ソースコード
+  <LI><B>.7z</B>圧縮・展開の<B>C++</B>ソースコード（削減バージョン）</LI>
+  <LI><B>LZMA / LZMA2 / XZ</B>圧縮・展開用の<B>ANSI-C</B>準拠のソースコード
+  <LI>実装例付き<B>7z</B>展開用の<B>ANSI-C</B>準拠のソースコード</LI>
+  <LI><B>LZMA</B>圧縮・展開の<B>C#</B>ソースコード
+  <LI><B>LZMA</B>圧縮・展開の<B>Java</B>ソースコード
+  <LI><B>lzma.exe</B> .lzmaファイルの圧縮・展開ツール</LI>
+  <LI><B>7zr.exe</B> .7zファイル作業用のツール (7-Zipにある7z.exeの削減バージョン)</LI>
+  <LI><B>SFXモジュール</B>自己解凍パッケージとインストーラを生成ためのもの</LI>
+</UL>
+
+<P>LZMA SDKに含まれる<B>ANSI-C</B>と<B>C++</B>のソースコードは、7-Zipソースコードのサブセットです。</P>
+
+<P><B>LZMA</B>の特徴:</P>
+<UL>
+  <LI>圧縮スピード: 3GHzのデュアルコアCPUで3MB/秒
+  <LI>展開スピード: 
+    <UL>
+      <LI>いまどきの3GHzのCPU（IntelやAMD、ARM）で20～50MB/秒
+      <LI>シンプルな1GHzのRISCプロセッサ（ARM、MIPS、PowerPC）で5～15MB/秒
+   </UL>
+  <LI>展開（解凍）時の要求メモリが少ない: 8～32KB＋辞書サイズ
+  <LI>展開（解凍）コードが小さい: 2～8 KB（高速最適化による）
+</UL>
+
+<P><B>LZMA</B>のデコーダは整数演算のみ利用し、一般的な32ビットCPUで利用できます。</P>
+
+<H2>ライセンス</H2>
+
+<P><B>LZMA SDK</B>は<B>パブリックドメイン</B>になりました</P>
+
+<P>オリジナルのLZMA SDKコードは、ソースコード形式またはコンパイルされたバイナリ形式で、商用または非商用目的のどちらでも、いかなる手段でも、誰でも自由にコピー、変更、公開、使用、コンパイル、販売、または配布できます。</P>
+
+<H2>LZMAの関連リンク</H2>
+<ul>
+<li><A href="https://en.wikipedia.org/wiki/LZMA">LZMA at Wikipedia</A></li>
+<li><a href="https://www.7-cpu.com/">LZMA Benchmark results for different CPUs</a></li>
+<li><a href="https://tukaani.org/xz/">XZ Utils / LZMA utils</a></li>
+<li><A href="https://sourceforge.net/projects/p7zip/">Port of LZMA SDK for JAVA from independent developer</A></li>
+<li><A href="https://www.birtles.org.uk/programming/">Port of LZMA SDK to Pascal (Delphi, Kylix and Freepascal)</A></li>
+<li><a href="https://www.joachim-bauch.de/projects/python/pylzma/">PyLZMA: Python bindings for LZMA</a></li>
+<li><a href="https://contrapunctus.net/league/haques/lzmajio/">LZMA Streams in Java</a></li>
+<li><a href="https://unzip-ada.sourceforge.io/">Zip-Ada : LZMA in Ada</a></li>
+</ul>
+
+<HR>
+<P><SMALL>Copyright (C) 2022 Igor Pavlov. <br>
+This japanese site is maintained by <a href="https://opensource.jp/">Open Source Group Japan</a>.
+</SMALL></P>
+</div>
+</div>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="/script-m.js"></script>
+</BODY></HTML>
+

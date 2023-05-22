@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8">
+<title>001ファイルを解凍する | 7-Zip</title>
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="https://sevenzip.osdn.jp/style-howto.css">
+</head><body>
+<div id="body-inner">
+<div id="sidebar">
+<a href="https://sevenzip.osdn.jp/" id="sitelogo"><img width="110" height="63" src="/7ziplogo.png" alt="7-Zip"></a>
+<hr>
+<ul>
+<li><a href="https://sevenzip.osdn.jp/" class="MenuLink">ホーム</a>
+<li><a href="https://sevenzip.osdn.jp/7z.html" class="MenuLink">7zファイル</a>
+<li><a href="https://sevenzip.osdn.jp/sdk.html" class="MenuLink">LZMA SDK</a>
+<li><a href="https://sevenzip.osdn.jp/download.html" class="MenuLink">ダウンロード</a>
+<li><a href="https://sevenzip.osdn.jp/faq.html" class="MenuLink">FAQ</a>
+<li><a href="https://sevenzip.osdn.jp/support.html" class="MenuLink">サポート</a>
+<li><a href="https://sevenzip.osdn.jp/links.html" class="MenuLink">リンク</a>
+</ul>
+<hr>
+<ul>
+<li><a href="https://sevenzip.osdn.jp/howto/">日本語howto</a>
+<li><a href="https://sevenzip.osdn.jp/chm/start.htm">ヘルプ</a>
+</ul>
+</div>
+<div id="contents">
+<h1>001ファイルを解凍する</h1>
+<div class="fright1"> 
+<div id="gpt-hhr" class="medium-rectangle"></div>
+</div> 
+<p>
+分割圧縮されたファイルは、「～zip.001」、「～zip.002」、「～.7z.001」、「～.7z.002」のようなファイル名（拡張子）になっています。結合したい場合は、あらかじめ分割ファイルすべてを1つのフォルダにまとめておきます。
+</p>
+<img src="split-file.png" alt="split-file.png">
+<h2>001ファイルをダブルクリックする</h2>
+<p>
+001ファイルに7-Zipが関連付けられていれば、001ファイルをダブルクリックするだけで、7-Zip File Manegerが起動し、連結された圧縮ファイルの中身が表示されます。中身が正しいようであれば、これを展開（解凍）しれば完了です。具体的には、<br>
+・ファイルを選択して、ツールバーにある「展開」ボタンを押す<br>
+・ファイルを選択してデスクトップなどにドラッグ＆ドロップする<br>
+のどちらかを実行すれば操作が完了します。
+</p>
+<h2>分割ファイルの入ったフォルダを7-Zipで閲覧する</h2>
+<p>
+001ファイルに7-Zipの関連付けがない場合は、まず7-Zip（7-Zip File Maneger）を起動し、7-Zipで分割ファイルが置かれているフォルダを閲覧します。.001ファイルなどの分割ファイルが見えた状態で、001を選択（ダブルクリック）すると、結合されたファイルにある中身が見える状態になります。あとは通常の解凍作業と同じで、取り出したいファイルを選択して、デスクトップなどにドラッグ＆ドロップするか、ツールバーにある「展開」ボタンを押して、結合・展開を行います。
+</p>
+<img src="split-file.png" alt="split-file.png">
+<p>
+↓↓↓↓↓↓↓001ファイルをクリック↓↓↓↓↓↓
+</p>
+<img src="split-file-iso.png" alt="split-file-iso.png">
+<p>
+ここで「展開」ボタンを押す or 中身のファイルをデスクトップなどにドラッグ＆ドロップすると結合＆解凍が実施されます。
+</p>
+<div id="gpt-hm7" class="leaderboard"></div>
+<h2>分割ファイルの結合のみ行う</h2>
+<p>
+大きなHDD上で分割ファイルを圧縮ファイルのままで保管したいような場合などは結合のみをしておきます。7-Zip Filr Manegerで分割ファイルを表示している状態で001ファイルを右クリックし、「ファイル結合」を選択すると、結合したファイルの保存先を指定するダイアログが表示されるので、保存先を指定して「OK」ボタンを押します。
+</p>
+<img src="combine-compress-file.png" alt="combine-compress-file.png">
+<p>
+↓↓↓↓↓↓↓↓↓↓↓↓
+</p>
+<img src="combine-dialog.png" alt="combine-dialog.png">
+<hr>
+<p><small>OSDN Project</small></p> 
+</div>
+</div>
+<script type="text/javascript" src="https://sevenzip.osdn.jp/script-howto.js"></script> 
+</body></html>
+

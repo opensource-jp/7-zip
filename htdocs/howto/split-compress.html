@@ -1,0 +1,68 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8">
+<title>分割圧縮の方法 | 7-Zip</title>
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="https://sevenzip.osdn.jp/style-howto.css">
+</head><body>
+<div id="body-inner">
+<div id="sidebar">
+<a href="https://sevenzip.osdn.jp/" id="sitelogo"><img width="110" height="63" src="/7ziplogo.png" alt="7-Zip"></a>
+<hr>
+<ul>
+<li><a href="https://sevenzip.osdn.jp/" class="MenuLink">ホーム</a>
+<li><a href="https://sevenzip.osdn.jp/7z.html" class="MenuLink">7zファイル</a>
+<li><a href="https://sevenzip.osdn.jp/sdk.html" class="MenuLink">LZMA SDK</a>
+<li><a href="https://sevenzip.osdn.jp/download.html" class="MenuLink">ダウンロード</a>
+<li><a href="https://sevenzip.osdn.jp/faq.html" class="MenuLink">FAQ</a>
+<li><a href="https://sevenzip.osdn.jp/support.html" class="MenuLink">サポート</a>
+<li><a href="https://sevenzip.osdn.jp/links.html" class="MenuLink">リンク</a>
+</ul>
+<hr>
+<ul>
+<li><a href="https://sevenzip.osdn.jp/howto/">日本語howto</a>
+<li><a href="https://sevenzip.osdn.jp/chm/start.htm">ヘルプ</a>
+</ul>
+</div>
+<div id="contents">
+<h1>分割圧縮の方法</h1>
+<div class="fright1"> 
+</div> 
+<p>
+大きなファイルやフォルダごとを圧縮する際など、圧縮したファイルを分割保存したい場合は、圧縮時のオプションで分割サイズを指定します。
+</p>
+<h2>GUIの画面で設定する</h2>
+<p>
+ファイルもしくはフォルダを右クリックして圧縮メニューを選んだ際など、GUIのダイアログで設定する場合は、左下にある「書庫をサイズで分割」で設定します。
+</p>
+<img src="split-compress.png" alt="分割圧縮">
+<p>
+FDやCD、DVDといった特定メディアサイズや10Mはドロップダウンメニューから選択できます。それ以外の任意のサイズにしたい場合は、「100M」など数字に続けて単位を入力します。
+たとえば、ISOイメージ（約500MB）を100MBで分割ZIP圧縮した場合は、.001、.002……といった拡張子が付いた圧縮ファイルが作成されます。
+</p>
+<img src="split-compress-file.png" alt="分割圧縮ファイル">
+<p>
+元のデータがISOファイルやたくさんの写真（JPEG等）をまとめて圧縮する場合などは、その中に含まれるファイルがすでにZIP相当の圧縮がされていており、ZIP圧縮ではあまりサイズが小さくならないので、7z形式を使ったほうがいいでしょう。
+</p>
+<p>
+例）<br>
+Windows98のインストール元CDのISOイメージ：<b>484MB</b><br>
+ZIP圧縮（7-Zipの標準設定＝通常のツールよりやや強い）で100MB分割：
+<b>5ファイル、415MB</b><br>
+7z圧縮（超圧縮）で100MB分割：
+<b>4ファイル、350MB</b><br>
+</p>
+<h2>コマンドで分割圧縮</h2>
+<p>
+7za.exeコマンドを使って分割圧縮を行うには、「-v」オプションを使います。
+</p>
+<pre>
+<strong>"C:\Program Files\7-Zip\7z.exe" a -v100m Windows.zip Windows.iso</strong>
+</pre>
+<p>
+「-v」に続けて分割ファイルのサイズを指定します。MB単位の場合は「m」、GB単位の場合は「g」を付けます。b（バイト）、k（キロ）、m（メガ）、g（ギガ）の単位が使えます。
+</p>
+<hr>
+<p><small>OSDN Project</small></p> 
+</div>
+</div>
+</body></html>
+
