@@ -1,6 +1,13 @@
 HISTORY of the 7-Zip
 --------------------
 
+23.01          2023-06-20
+-------------------------
+- The page "Language" in 7-Zip's menu Tools/Options now shows information
+  about selected translation, including the number of translated lines.
+- Some bugs were fixed.
+
+
 23.00          2023-05-07
 -------------------------
 - 7-Zip now can use new ARM64 filter for compression to 7z and xz archives.
