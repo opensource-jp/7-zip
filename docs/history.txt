@@ -1,6 +1,19 @@
 HISTORY of the 7-Zip
 --------------------
 
+24.05          2024-05-14
+-------------------------
+- New switch -myv={MMNN} to set decoder compatibility version for 7z archive creating.
+  {MMNN} is 4-digit number that represents the version of 7-Zip without a dot.
+  If -myv={MMNN} switch is specified, 7-Zip will only use compression methods that can 
+  be decoded by the specified version {MMNN} of 7-Zip and newer versions.
+  If -myv={MMNN} switch is not specified, -myv=2300 is used, and 7-Zip will only
+  use compression methods that can be decoded by 7-Zip 23.00 and newer versions.
+- New switch -myfa={FilterID} to    allow 7-Zip to use the specified filter method for 7z archive creating.
+- New switch -myfd={FilterID} to disallow 7-Zip to use the specified filter method for 7z archive creating.
+- Some bugs were fixed.
+
+
 24.04          2024-04-05
 -------------------------
 - New menu item in 7-Zip File Manager: "Tools / Delete Temporary Files...".
