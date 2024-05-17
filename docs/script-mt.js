@@ -10,7 +10,8 @@ var ins ='<A href="http://www.7-zip.org/">English</A><BR>'+
 '<A href="https://7zip.rnbastos.com/">Portuguese Brazil</A><BR>'+
 '<A href="https://7zip-es.updatestar.com/">Spanish</A><BR>'+
 '<A href="http://7zip-thai.inetbridge.net/">Thai</A><BR>'+
-'<A href="https://7zip-vi.updatestar.com/">Vietnamese</A><BR>';
+'<A href="https://7zip-vi.updatestar.com/">Vietnamese</A><BR>'+
+'<HR><A HREF="https://7-max.com/">7-max</A><HR>';
 $("p#language").prepend(ins);
 
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
