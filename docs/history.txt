@@ -1,6 +1,11 @@
 HISTORY of the 7-Zip
 --------------------
 
+24.07          2024-06-19
+-------------------------
+- The bug was fixed: 7-Zip could crash for some incorrect ZSTD archives.
+
+
 24.06          2024-05-26
 -------------------------
 - The bug was fixed: 7-Zip could not unpack some ZSTD archives.
