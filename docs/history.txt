@@ -3,7 +3,7 @@ HISTORY of the 7-Zip
 
 25.01          2025-08-03
 -------------------------
-- The code for handling symbolic links has been changed 
+- CVE-2025-55188 : The code for handling symbolic links has been changed 
   to provide greater security when extracting files from archives.
   Command line switch -snld20 can be used to bypass default security 
   checks when creating symbolic links.
@@ -19,6 +19,8 @@ HISTORY of the 7-Zip
 - deflate (zip/gz) compression speed was increased by 1-3%.
 - improved support for zip, cpio and fat archives.
 - fixed some bugs and vulnerabilities.
+- the bug was fixed : CVE-2025-53816 : 7-Zip could work incorrectly for some incorrect RAR archives. 
+- the bug was fixed : CVE-2025-53817 : 7-Zip could crash for some incorrect COM (Compound File) archives. 
 
 
 24.09          2024-11-29
@@ -56,12 +58,12 @@ HISTORY of the 7-Zip
   in "Confirm File Replace" window, causing problems after 1600 displays of "Confirm File Replace"
   window from same running 7-Zip process.
 - Some optimizations for displaying file icons in 7-Zip File Manager and in "Confirm File Replace" window.
-- Some bugs were fixed.
+- Some bugs were fixed. CVE-2024-11612.
 
 
 24.07          2024-06-19
 -------------------------
-- The bug was fixed: 7-Zip could crash for some incorrect ZSTD archives.
+- The bug was fixed: 7-Zip could crash for some incorrect ZSTD archives (CVE-2024-11477).
 
 
 24.06          2024-05-26
@@ -73,7 +75,7 @@ HISTORY of the 7-Zip
 -------------------------
 - New switch -myv={MMNN} to set decoder compatibility version for 7z archive creating.
   {MMNN} is 4-digit number that represents the version of 7-Zip without a dot.
-  If -myv={MMNN} switch is specified, 7-Zip will only use compression methods that can 
+  If -myv={MMNN} switch is specified, 7-Zip will only use compression methods that can
   be decoded by the specified version {MMNN} of 7-Zip and newer versions.
   If -myv={MMNN} switch is not specified, -myv=2300 is used, and 7-Zip will only
   use compression methods that can be decoded by 7-Zip 23.00 and newer versions.
@@ -86,7 +88,7 @@ HISTORY of the 7-Zip
 -------------------------
 - New menu item in 7-Zip File Manager: "Tools / Delete Temporary Files...".
   This menu item opens a window showing temporary folders and files
-  created by 7-Zip in the user's "Temp" folder on a Windows system. 
+  created by 7-Zip in the user's "Temp" folder on a Windows system.
   In this window, the user can delete temporary files.
 
 
@@ -104,7 +106,7 @@ HISTORY of the 7-Zip
 - 7zg.exe (7-Zip GUI): -y switch disables user requests and messages.
 - 7-Zip shows hash methods XXH64 and BLAKE2sp in context menu.
 - -slmu switch : to show timestamps as UTC instead of LOCAL TIME.
-- -slsl switch : in console 7-Zip for Windows : to show file paths with 
+- -slsl switch : in console 7-Zip for Windows : to show file paths with
   linux path separator slash '/' instead of backslash separator '\'.
 - 7-Zip supports .sha256 files that use backslash path separator '\'.
 - Some bugs were fixed.
@@ -117,10 +119,10 @@ HISTORY of the 7-Zip
 - 7-Zip now supports fast hash algorithm XXH64 that is used in ZSTD.
 - 7-Zip now can unpack RAR archives (that use larger than 4 GB dictionary) created by new WinRAR 7.00.
 - 7-Zip now can unpack DMG archives that use XZ (ULMO/LZMA) compression method.
-- 7-zip now can unpack NTFS images with cluster size larger than 64 KB.
-- 7-zip now can unpack MBR and GDP images with 4 KB sectors.
+- 7-Zip now can unpack NTFS images with cluster size larger than 64 KB.
+- 7-Zip now can unpack MBR and GPT images with 4 KB sectors.
 - Speed optimizations for archive unpacking: rar, cab, wim, zip, gz.
-- Speed optimizations for hash caclulation: CRC-32, CRC-64, Blake2sp.
+- Speed optimizations for hash caclulation: CRC-32, CRC-64, BLAKE2sp.
 - The bug was fixed: 7-Zip for Linux could fail for multivolume creation in some cases.
 - Some bugs were fixed.
 
@@ -161,10 +163,12 @@ HISTORY of the 7-Zip
   And the drag-and-drop operation with right button of mouse now is supported for some cases.
 - The bugs were fixed:
   - ZIP archives: if multithreaded zip compression was performed with more than one
-      file to stdout stream (-so switch), 7-zip didn't write "data descriptor" for some files.
+      file to stdout stream (-so switch), 7-Zip didn't write "data descriptor" for some files.
   - ext4 archives: 7-Zip couldn't correctly extract symbolic link to directory from ext4 archives.
   - HFS and APFS archives: 7-Zip incorrectly decoded uncompressed blocks (64 KiB) in compressed forks.
+  - HFS : zlib without Adler supported
   - Some another bugs were fixed.
+
 
 
 22.01          2022-07-15
@@ -178,16 +182,16 @@ HISTORY of the 7-Zip
 - 7-Zip now can extract APFS (Apple File System) images that can be used in DMG files.
 - 7-Zip now can create TAR archives in POSIX (pax) tar format with the switches
     -ttar -mm=pax or -ttar -mm=posix
-- 7-Zip now can store additional file timestamps with high precision (1 ns in Linux) 
+- 7-Zip now can store additional file timestamps with high precision (1 ns in Linux)
   in tar/pax archives with the following switches:
     -ttar -mm=pax -mtp=3 -mtc -mta
 - New switches for Linux version for TAR archives:
-  -snoi : store owner/group ids in archive or set owner/group ids from archive to extracted files. 
+  -snoi : store owner/group ids in archive or set owner/group ids from archive to extracted files.
   -snon : store owner/group names in archive
 - New -snz switch to propagate Zone.Identifier stream to extracted files (Windows).
 - New option "Propagate Zone.Id stream" in Tools/Options/7-Zip menu.
-- New "Options" window in "Add to archive" allows to select what metadata must be 
-  included to archive. Also it allows to select new option 
+- New "Options" window in "Add to archive" allows to select what metadata must be
+  included to archive. Also it allows to select new option
   "Do not change source files last access time".
 - Some bugs were fixed.
 
@@ -195,9 +199,9 @@ HISTORY of the 7-Zip
 21.07          2021-12-26
 -------------------------
 - 7-Zip now can extract VHDX disk images (Microsoft Hyper-V Virtual Hard Disk v2 format).
-- New switches: -spm and -im!{file_path} to exclude directories from processing 
+- New switches: -spm and -im!{file_path} to exclude directories from processing
     for specified paths that don't contain path separator character at the end of path.
-- In the "Add to Archive" window, now it is allowed to use -m prefix for "Parameters" 
+- In the "Add to Archive" window, now it is allowed to use -m prefix for "Parameters"
   field as in command line: -mparam.
 - The sorting order of files in archives was slightly changed to be more consistent
   for cases where the name of some directory is the same as the prefix part of the name
@@ -207,9 +211,9 @@ HISTORY of the 7-Zip
 
 21.06          2021-11-24
 -------------------------
-- The window "Add to Archive" now allows to set a limit on memory usage (RAM) 
+- The window "Add to Archive" now allows to set a limit on memory usage (RAM)
   that will be used for compressing.
-- New switch -mmemuse={N}g / -mmemuse=p{N} to set a limit on memory usage (RAM) 
+- New switch -mmemuse={N}g / -mmemuse=p{N} to set a limit on memory usage (RAM)
   for compressing and decompressing.
 - Bug in versions 21.00-21.05 was fixed:
   7-Zip didn't set attributes of directories during archive extracting.
@@ -220,7 +224,7 @@ HISTORY of the 7-Zip
 -------------------------
 - 7-Zip now reduces the number of working CPU threads for compression,
   if RAM size is not enough for compression with big LZMA2 dictionary.
-- 7-Zip now can create and check "file.sha256" text files that contain the list 
+- 7-Zip now can create and check "file.sha256" text files that contain the list
   of file names and SHA-256 checksums in format compatible with sha256sum program.
   7-Zip can work with such checksum files as with archives,
   but these files don't contain	real file data.
@@ -230,11 +234,11 @@ HISTORY of the 7-Zip
   The commands for command line version:
     7z a -thash file.sha256 *.txt
     7z t -thash file.sha256
-    7z t -thash -shd. file.sha256 
-  New -shd{dir_path} switch to set the directory that is used to check files 
-  referenced by "file.sha256" file for "Test" operation. 
-  If -shd{dir_path} is not specified, 7-Zip uses the directory where "file.sha256" is stored.  
-- New -xtd switch to exclude directory items from processing.
+    7z t -thash -shd. file.sha256
+  New -shd{dir_path} switch to set the directory that is used to check files
+  referenced by "file.sha256" file for "Test" operation.
+  If -shd{dir_path} is not specified, 7-Zip uses the directory where "file.sha256" is stored.
+- New -xtd switch to exclude directory metadata records from processing.
 
 
 21.03 beta     2021-07-20
@@ -248,7 +252,7 @@ HISTORY of the 7-Zip
 - 7-Zip now writes additional field for filename in UTF-8 encoding to zip archives.
   It allows to extract correct file name from zip archives on different systems.
 - The command line version of 7-Zip for macOS was released.
-- The speed for LZMA and LZMA2 decompression in arm64 versions for macOS and Linux 
+- The speed for LZMA and LZMA2 decompression in arm64 versions for macOS and Linux
   was increased by 20%-60%.
 - Some changes and improvements in ZIP, TAR and NSIS code.
 
@@ -256,7 +260,7 @@ HISTORY of the 7-Zip
 21.01 alpha    2021-03-09
 -------------------------
 - The command line version of 7-Zip for Linux was released.
-- The improvements for speed of ARM64 version using hardware CPU instructions 
+- The improvements for speed of ARM64 version using hardware CPU instructions
   for AES, CRC-32, SHA-1 and SHA-256.
 - The bug in versions 18.02 - 21.00 was fixed:
   7-Zip could not correctly extract some ZIP archives created with xz compression method.
@@ -273,24 +277,24 @@ HISTORY of the 7-Zip
 20.02 alpha    2020-08-08
 -------------------------
 - The default number of LZMA2 chunks per solid block in 7z archive was increased to 64.
-  It allows to increase the compression speed for big 7z archives, if there is a big number 
+  It allows to increase the compression speed for big 7z archives, if there is a big number
   of CPU cores and threads.
 - The speed of PPMd compressing/decompressing was increased for 7z/ZIP/RAR archives.
-- The new -ssp switch. If the switch -ssp is specified, 7-Zip doesn't allow the system 
-  to modify "Last Access Time" property of source files for archiving and hashing operations. 
+- The new -ssp switch. If the switch -ssp is specified, 7-Zip doesn't allow the system
+  to modify "Last Access Time" property of source files for archiving and hashing operations.
 - Some bugs were fixed.
 - New localization: Swahili.
 
 
 20.00 alpha    2020-02-06
 -------------------------
-- 7-Zip now supports new optional match finders for LZMA/LZMA2 compression: bt5 and hc5, 
+- 7-Zip now supports new optional match finders for LZMA/LZMA2 compression: bt5 and hc5,
   that can work faster than bt4 and hc4 match finders for the data with big redundancy.
-- The compression ratio was improved for Fast and Fastest compression levels with the 
+- The compression ratio was improved for Fast and Fastest compression levels with the
   following default settings:
    - Fastest level (-mx1) : hc5 match finder with 256 KB dictionary.
    - Fast    level (-mx3) : hc5 match finder with 4 MB dictionary.
-- Minor speed optimizations in multithreaded LZMA/LZMA2 compression for Normal/Maximum/Ultra 
+- Minor speed optimizations in multithreaded LZMA/LZMA2 compression for Normal/Maximum/Ultra
   compression levels.
 - bzip2 decoding code was updated to support bzip2 archives, created by lbzip2 program.
 - Some bugs were fixed.
@@ -303,13 +307,13 @@ HISTORY of the 7-Zip
 - 7-Zip now can use new x86/x64 hardware instructions for SHA-1 and SHA-256, supported
   by AMD Ryzen and latest Intel CPUs: Ice Lake and Goldmont.
   It increases
-    - the speed of SHA-1/SHA-256 hash value calculation, 
-    - the speed of encryption/decryption in zip AES, 
+    - the speed of SHA-1/SHA-256 hash value calculation,
+    - the speed of encryption/decryption in zip AES,
     - the speed of key derivation for encryption/decryption in 7z/zip/rar archives.
-- The speed of zip AES encryption and 7z/zip/rar AES decryption was increased with 
+- The speed of zip AES encryption and 7z/zip/rar AES decryption was increased with
   the following improvements:
-   - 7-Zip now can use new x86/x64 VAES (AVX Vector AES) instructions, supported by 
-     Intel Ice Lake CPU. 
+   - 7-Zip now can use new x86/x64 VAES (AVX Vector AES) instructions, supported by
+     Intel Ice Lake CPU.
    - The existing code of x86/x64 AES-NI was improved also.
 - There is 2% speed optimization in 7-Zip benchmark's decompression.
 - Some bugs were fixed.
@@ -334,14 +338,14 @@ HISTORY of the 7-Zip
 
 18.05          2018-04-30
 -------------------------
-- The speed for LZMA/LZMA2 compressing was increased 
-    by 8% for fastest/fast compression levels and 
+- The speed for LZMA/LZMA2 compressing was increased
+    by 8% for fastest/fast compression levels and
     by 3% for normal/maximum compression levels.
 - 7-Zip now shows Properties (Info) window and CRC/SHA results window
   as "list view" window instead of "message box" window.
 - Some improvements in zip, hfs and dmg code.
 - Previous versions of 7-Zip could work incorrectly in "Large memory pages" mode in
-  Windows 10 because of some BUG with "Large Pages" in Windows 10. 
+  Windows 10 because of some BUG with "Large Pages" in Windows 10.
   Now 7-Zip doesn't use "Large Pages" on Windows 10 up to revision 1709 (16299).
 - The vulnerability in RAR unpacking code was fixed (CVE-2018-10115).
 - Some bugs were fixed.
@@ -371,7 +375,7 @@ HISTORY of the 7-Zip
 18.00 beta     2018-01-10
 -------------------------
 - 7-Zip now can unpack OBJ/COFF files.
-- new -sse switch to stop archive creating, if 7-Zip can't open some input file. 
+- new -sse switch to stop archive creating, if 7-Zip can't open some input file.
 - Some bugs were fixed.
 
 
@@ -380,16 +384,16 @@ HISTORY of the 7-Zip
 - Minor speed optimization for LZMA2 (xz and 7z) multi-threading compression.
   7-Zip now uses additional memory buffers for multi-block LZMA2 compression.
   CPU utilization was slightly improved.
-- 7-zip now creates multi-block xz archives by default. Block size can be 
+- 7-zip now creates multi-block xz archives by default. Block size can be
   specified with -ms[Size]{m|g} switch.
 - xz decoder now can unpack random block from multi-block xz archives.
-  7-Zip File Manager now can open nested multi-block xz archives 
+  7-Zip File Manager now can open nested multi-block xz archives
   (for example, image.iso.xz) without full unpacking of xz archive.
 - 7-Zip now can create zip archives from stdin to stdout.
 - 7-Zip command line: @listfile now doesn't work after -- switch.
   Use -i@listfile before -- switch instead.
 - The BUGs were fixed:
-  7-Zip could add unrequired alternate file streams to WIM archives, 
+  7-Zip could add unrequired alternate file streams to WIM archives,
   for commands that contain filename wildcards and -sns switch.
   7-Zip 17.00 beta crashed for commands that write anti-item to 7z archive.
   7-Zip 17.00 beta ignored "Use large memory pages" option.
@@ -406,7 +410,7 @@ HISTORY of the 7-Zip
 
 16.04          2016-10-04
 -------------------------
-- The bug was fixed: 7-Zip 16.03 exe installer under Vista didn't create 
+- The bug was fixed: 7-Zip 16.03 exe installer under Vista didn't create
   links in Start / Programs menu.
 - Some bugs were fixed in RAR code.
 
@@ -428,7 +432,7 @@ HISTORY of the 7-Zip
 - 7-Zip File Manager:
   - The code for "Open file from archive" operation was improved.
   - The code for "Tools/Options" window was improved.
-  - The BUG was fixed: there was incorrect mouse cursor capture for 
+  - The BUG was fixed: there was incorrect mouse cursor capture for
     drag-and-drop operations from open archive to Explorer window.
 - Some bugs were fixed.
 - New localization: Yoruba.
@@ -448,7 +452,7 @@ HISTORY of the 7-Zip
 -------------------------
 - The BUG in 9.21 - 15.09 was fixed:
   7-Zip could ignore some parameters, specified for archive creation operation
-  for gzip and bzip2 formats in "Add to Archive" window and in command line 
+  for gzip and bzip2 formats in "Add to Archive" window and in command line
   version (-m switch).
 - Some bugs were fixed.
 
@@ -480,7 +484,7 @@ HISTORY of the 7-Zip
 - The BUG in 7-Zip File Manager was fixed:
   The "Move" operation to open 7z archive didn't delete empty files.
 - The BUG in 15.05 was fixed:
-  console version added some text to the end of stdout stream, is -so switch was used. 
+  console version added some text to the end of stdout stream, is -so switch was used.
 - The BUG in 9.30 - 15.05 was fixed:
   7-Zip could not open multivolume sfx RAR archive.
 - Some bugs were fixed.
@@ -494,11 +498,11 @@ HISTORY of the 7-Zip
   volumes via "File / Alternate Streams" menu command.
 - 7-Zip now can extract .zipx (WinZip) archives that use xz compression.
 - new optional "section size" parameter for BCJ2 filter for compression ratio improving.
-  Example: -mf=BCJ2:d9M, if largest executable section in files is smaller than 9 MB. 
+  Example: -mf=BCJ2:d9M, if largest executable section in files is smaller than 9 MB.
 - Speed optimizations for BCJ2 filter and SHA-1 and SHA-256 calculation.
 - Console version now uses stderr stream for error messages.
 - Console version now shows names of processed files only in progress line by default.
-- new -bb[0-3] switch to set output log level. -bb1 shows names of processed files in log. 
+- new -bb[0-3] switch to set output log level. -bb1 shows names of processed files in log.
 - new -bs[o|e|p][0|1|2] switch to set stream for output messages;
       o: output, e: error, p: progress line; 0: disable, 1: stdout, 2: stderr.
 - new -bt switch to show execution time statistics.
@@ -507,7 +511,7 @@ HISTORY of the 7-Zip
 - The BUG was fixed:
   7-Zip didn't restore NTFS permissions for folders during extracting from WIM archives.
 - The BUG was fixed:
-  The command line version: if the command "rn" (Rename) was called with more 
+  The command line version: if the command "rn" (Rename) was called with more
   than one pair of paths, 7-Zip used only first rename pair.
 - The BUG was fixed:
   7-Zip crashed for ZIP/LZMA/AES/AES-NI.
@@ -526,7 +530,7 @@ HISTORY of the 7-Zip
 -------------------------
 - The BUG in command line version was fixed:
   7-Zip created temporary archive in current folder during update archive
-  operation, if -w{Path} switch was not specified. 
+  operation, if -w{Path} switch was not specified.
   The fixed 7-Zip creates temporary archive in folder that contains updated archive.
 - The BUG in 9.33-9.35 was fixed:
   7-Zip silently ignored file reading errors during 7z or gz archive creation,
@@ -551,10 +555,10 @@ HISTORY of the 7-Zip
 9.34 alpha     2014-06-22
 -------------------------
 - The BUG in 9.33 was fixed:
-  Command line version of 7-Zip could work incorrectly, if there is relative 
+  Command line version of 7-Zip could work incorrectly, if there is relative
   path in exclude filename optiton (-x) and absolute path as include filename.
 - The BUG in 9.26-9.33 was fixed:
-  7-Zip could not open some unusual 7z archives that were created by another 
+  7-Zip could not open some unusual 7z archives that were created by another
   software (not by 7-Zip).
 - The BUG in 9.31-9.33 was fixed:
   7-Zip could crash with switch -tcab.
@@ -562,8 +566,8 @@ HISTORY of the 7-Zip
 
 9.33 alpha     2014-06-15
 -------------------------
-- 7-Zip now can show icons for 7-Zip items in Explorer's context menu. 
-- "Add to archive" dialog box: 
+- 7-Zip now can show icons for 7-Zip items in Explorer's context menu.
+- "Add to archive" dialog box:
     - new options in "Path Mode"
     - new option "Delete files after compression"
     - new "NTFS" options for WIM and TAR formats:
@@ -583,12 +587,12 @@ HISTORY of the 7-Zip
     - new -spe switch to Eliminate duplication of root folder for extract archive command
     - new -snh switch to store hard links as links (WIM and TAR formats only)
     - new -snl switch to store symbolic links as links (WIM and TAR formats only)
-- NSIS support was improved. 
-- The problem was fixed: 
-    The command "extract to \*" with multiple archives could use same 
+- NSIS support was improved.
+- The problem was fixed:
+    The command "extract to \*" with multiple archives could use same
     output folder, if archives are placed inside PE (EXE) file.
 - The BUG of 9.31-9.32 was fixed:
-    Command line version for test and extract commands returned the 
+    Command line version for test and extract commands returned the
     value 0 as exit code, if it couldn't open archive.
 - The BUG was fixed:
     7-Zip could not create archives with anti-items for any archive type,
@@ -601,7 +605,7 @@ HISTORY of the 7-Zip
 -------------------------
 - 7-Zip now can create multivolume SFX archives in 7z format.
   Standalone sfx module now can unpack external 7z archive with name that is
-  matched to name of sfx module. For example, sfx module renamed to archive.exe 
+  matched to name of sfx module. For example, sfx module renamed to archive.exe
   can unpack archive.7z or archive.7z.001 .
 - ZIP, NSIS, HFS, AR support was improved.
 - 7-Zip now supports files larger than 4 GiB in ISO archives.
@@ -610,9 +614,9 @@ HISTORY of the 7-Zip
 - Improved support for file pathnames longer than 260 characters.
 - CRC and SHA checksum calculation for files can be called via Explorer's context menu.
 - 7-Zip File Manager now also takes into account the numbers in filenames for sorting order.
-- 7-Zip File Manager now can use RAM buffers instead of temp files to open 
+- 7-Zip File Manager now can use RAM buffers instead of temp files to open
   nested archives, if temp file is smaller than 1/4 of RAM size.
-- 7-Zip File Manager can open files in "Parser" mode via "Open Archive > #" context 
+- 7-Zip File Manager can open files in "Parser" mode via "Open Archive > #" context
   menu command. It shows the list of archives inside file.
 - Command line version:
     - new -t# switch to open file in "Parser" mode and show the list of archives inside file.
@@ -622,9 +626,9 @@ HISTORY of the 7-Zip
 - The BUGs were fixed:
     - 7-Zip 9.30 and early versions created ZIP archives with minor errors
       in extra field of headers for directory items, if AES (WinZip-AES) encryption was used.
-    - 7-Zip could work incorrectly in decompression of more than one 
+    - 7-Zip could work incorrectly in decompression of more than one
       multi-volume archive in one command.
-    - 7-Zip 9.24 alpha - 9.30 alpha versions could not extract ZIP archives 
+    - 7-Zip 9.24 alpha - 9.30 alpha versions could not extract ZIP archives
       encrypted with PKWARE-AES method.
 - Minimum supported system now is Windows 2000. 7-Zip doesn't work on Windows 95/98/ME.
 - New localization: Irish.
@@ -639,21 +643,21 @@ HISTORY of the 7-Zip
 - Command line version:
     - new "rn" command to rename files in archive.
     - new -sdel switch to delete files after including to archive.
-    - new -sns switch to store NTFS alternate streams (for WIM format only). 
+    - new -sns switch to store NTFS alternate streams (for WIM format only).
     - new -sni switch to store NT security information for files (for WIM format only).
     - new -stl switch to set archive timestamp from the most recently modified file.
 - Speed optimizations for opening big archives and big disk folders.
-- 7-Zip now writes special padding blocks to headers of 7z archives for 
-  faster archive opening. Note that 7-Zip 4.50 - 4.58 contain BUG, 
+- 7-Zip now writes special padding blocks to headers of 7z archives for
+  faster archive opening. Note that 7-Zip 4.50 - 4.58 contain BUG,
   so these old versions can't correctly work with such new 7z archives.
 - DMG support was improved
 - Some bugs were fixed.
 - The BUG in 7-Zip 9.26 alpha - 9.29 alpha versions was fixed.
-  These alpha versions could not open non-solid 7z archive, if 
+  These alpha versions could not open non-solid 7z archive, if
   some files were skipped during creation of that archive.
   That problem is also related to 7z archives created in solid mode,
   if each solid block contains no more than one file.
-  Note: 7-Zip skips files that were open for writing by another 
+  Note: 7-Zip skips files that were open for writing by another
   application and shows warning in that case.
 - New localization: Aragonese.
 
@@ -679,7 +683,7 @@ HISTORY of the 7-Zip
 -------------------------
 
 - 7-Zip now uses progress indicator displayed on a taskbar button under Windows 7.
-- The BUG in 7-Zip 9.21 beta was fixed: 
+- The BUG in 7-Zip 9.21 beta was fixed:
     7-Zip could ignore some options when you created ZIP archives.
     For example, it could use ZipCrypto cipher instead of AES-256.
 
@@ -691,9 +695,9 @@ HISTORY of the 7-Zip
   So other 32-bit programs can call 64-bit 7-Zip via context menu.
 - Now it's possible to associate 7-Zip with file types without Administrator rights.
 - New -mf=FilterID switch to specify compression filter. Examples:
-    7z a -mf=bcj2 a.7z a.tar 
-    7z a -mf=delta:4 a.7z a.wav 
-    7z a -mf=bcj a.tar.xz a.tar 
+    7z a -mf=bcj2 a.7z a.tar
+    7z a -mf=delta:4 a.7z a.wav
+    7z a -mf=bcj a.tar.xz a.tar
 - 32-bit 7-Zip running under 64-bit Windows now can use up to 4 GB of RAM.
 - Some bugs were fixed.
 - New localizations: Corsican, Kyrgyz, Ligurian.
@@ -745,7 +749,7 @@ HISTORY of the 7-Zip
 9.13 beta      2010-04-15
 -------------------------
 - 7-Zip now stores NTFS file timestamps to ZIP archives.
-- New additional "Open archive >" item in context menu allows to select 
+- New additional "Open archive >" item in context menu allows to select
   archive type for some files.
 - Some bugs were fixed.
 - New localization: Uyghur.
@@ -802,7 +806,7 @@ HISTORY of the 7-Zip
 - 7-Zip now can unpack NTFS, FAT, VHD and MBR archives.
 - 7-Zip now can unpack GZip, BZip2, LZMA, XZ and TAR archives from stdin.
 - 7-Zip now can open/copy/compress disk images (like \\.\c:) from \\.\ folder.
-- 7-Zip File Manager now doesn't use temp files to open nested archives 
+- 7-Zip File Manager now doesn't use temp files to open nested archives
   stored without compression.
 - New -scrc switch to calculate total CRC-32 during extracting / testing.
 - New -scc{WIN|DOS|UTF-8} switch to specify charset for console input/output (default = DOS).
@@ -817,7 +821,7 @@ HISTORY of the 7-Zip
 
 4.64           2009-01-03
 -------------------------
-- The bug in 7-Zip 4.63 was fixed: 7-Zip could not decrypt .ZIP archives 
+- The bug in 7-Zip 4.63 was fixed: 7-Zip could not decrypt .ZIP archives
   encrypted with WinZip-AES method.
 
 
@@ -863,16 +867,16 @@ HISTORY of the 7-Zip
     2) -mcu switch:  7-Zip uses UTF-8, if there are non-ASCII symbols.
     3) -mcl switch:  7-Zip uses local code page.
 - Now it's possible to store file creation time in 7z and ZIP archives (-mtc switch).
-- 7-Zip now can unpack multivolume RAR archives created with 
+- 7-Zip now can unpack multivolume RAR archives created with
   "old style volume names" scheme and names *.001, *.002, ...
-- Now it's possible to use -mSW- and -mSW+ switches instead of -mSW=off and -mSW=on  
+- Now it's possible to use -mSW- and -mSW+ switches instead of -mSW=off and -mSW=on
 - Some bugs were fixed.
 - New localizations: Punjabi (Indian), Pashto.
 
 
 4.57           2007-12-06
 -------------------------
-- The BUG in command line version was fixed: -up3 switch 
+- The BUG in command line version was fixed: -up3 switch
   could work incorrectly.
 
 
@@ -926,7 +930,7 @@ HISTORY of the 7-Zip
 
 4.48 beta      2007-06-26
 -------------------------
-- Encryption strength for .7z format was increased. 
+- Encryption strength for .7z format was increased.
   Now it uses random initialization vectors.
 - Some bugs were fixed.
 
@@ -946,15 +950,15 @@ HISTORY of the 7-Zip
 
 4.45 beta      2007-04-17
 -------------------------
-- Now it's possible to specify the size of solid block and the number 
-  of CPU threads in "Add to archive" dialog box. 
+- Now it's possible to specify the size of solid block and the number
+  of CPU threads in "Add to archive" dialog box.
 - Default dictionary size was increased: Normal: 16 MB, Max: 32 MB.
 - Speed optimizations.
 - Benchmark was improved (new "b" command in command line version).
 - The number of DLL files was reduced.
 - Now it's possible to associate 7-zip with combined types like .tbz2
 - switch -mhcf=off is not supported now.
-- If -t{Type} switch is not specified, 7-Zip now uses extension of archive to 
+- If -t{Type} switch is not specified, 7-Zip now uses extension of archive to
   detect the type of archive.
 - Some bugs were fixed.
 - New localization: Welsh.
@@ -974,7 +978,7 @@ HISTORY of the 7-Zip
 - ZIP format supporting was improved.
 - 7-Zip now supports WinZip-compatible AES-256 encryption for .ZIP archives.
 - New context menu items for .ZIP archives creating.
-- 7-Zip now uses order list (list of extensions) for files sorting for compressing 
+- 7-Zip now uses order list (list of extensions) for files sorting for compressing
   to .7z archives. It can slightly increase compression ratio in some cases.
 - 7-Zip now restores modification time of folders during .7z archives extracting.
 - Some bugs were fixed.
@@ -985,7 +989,7 @@ HISTORY of the 7-Zip
 4.42           2006-05-14
 -------------------------
 - Compressing speed and Memory requirements were increased.
-  Default dictionary size was increased: Fastest: 64 KB, Fast: 1 MB, 
+  Default dictionary size was increased: Fastest: 64 KB, Fast: 1 MB,
   Normal: 4 MB, Max: 16 MB, Ultra: 64 MB.
 - BZip2 compressing / decompressing now can work in multi-threading mode
 - Multi-threading mode now is default for multi-processor systems
@@ -1022,7 +1026,7 @@ HISTORY of the 7-Zip
 - Sfx modules 7z.sfx and 7zCon.sfx now use msvcrt.dll
 - Speed optimizations in LZMA maximum/ultra compressing.
 - LZMA now supports word size up to 273
-- 7-Zip now reduces dictionary size for LZMA, if you compress files 
+- 7-Zip now reduces dictionary size for LZMA, if you compress files
   smaller than specified dictionary size.
 - 7-Zip now can use large memory pages:
     GUI: 7-Zip File Manager / Options / Settings / Use large memory pages.
@@ -1030,10 +1034,10 @@ HISTORY of the 7-Zip
   This feature allows to increase speed of compressing.
   But 7-Zip can make some pause at starting of compressing for allocating large pages.
   Also Task Manager doesn't show real memory usage of program, if 7-Zip uses large pages.
-  This feature works only on Windows 2003 / XP x64 / Vista. 
+  This feature works only on Windows 2003 / XP x64 / Vista.
   Also you must have administrator's rights for your system.
   Recommended size of RAM: 1 GB or more.
-  To install this feature you must run 7-Zip File Manager at least once, 
+  To install this feature you must run 7-Zip File Manager at least once,
   close it and reboot system.
 - Some bugs were fixed
   
@@ -1068,7 +1072,7 @@ HISTORY of the 7-Zip
 
 4.25 beta      2005-07-31
 -------------------------
-- 7-Zip now doesn't interrupt the compressing when it can not 
+- 7-Zip now doesn't interrupt the compressing when it can not
   find specified file as in version 4.24 beta. It just shows warning.
 - 7-Zip now supports standard selection mode in the file list
 - Some bugs were fixed
@@ -1078,7 +1082,7 @@ HISTORY of the 7-Zip
 -------------------------
 - 7-Zip now supports right-click Drag and Drop in Explorer
 - Command line version now supports short file names (like FILENA~1.TXT)
-- If there are no wildcard names and there is no -r switch in command line, 
+- If there are no wildcard names and there is no -r switch in command line,
   7-Zip now checks that specified files exist on disk before compressing.
 - Some bugs were fixed
 
@@ -1093,15 +1097,15 @@ HISTORY of the 7-Zip
 
 4.20           2005-05-30
 -------------------------
-- No changes 
+- No changes
 
 
 4.19 beta      2005-05-21
 -------------------------
-- BZip2 code was rewritten. Now it supports 3 modes: Normal, Maximum and 
-  Ultra. In Normal mode it compresses almost as original BZip2 compressor. 
-  Compression ratio in Maximum and Ultra modes is 1-3% better for some files, 
-  but Maximum Mode is about 3 times slower and Ultra Mode is about 8 times 
+- BZip2 code was rewritten. Now it supports 3 modes: Normal, Maximum and
+  Ultra. In Normal mode it compresses almost as original BZip2 compressor.
+  Compression ratio in Maximum and Ultra modes is 1-3% better for some files,
+  but Maximum Mode is about 3 times slower and Ultra Mode is about 8 times
   slower than Normal mode.
 - Console version now prints all messages to stdout by default,
   and if -so switch is specified, 7-Zip prints messages to stderr.
@@ -1111,14 +1115,14 @@ HISTORY of the 7-Zip
 
 4.18 beta      2005-04-19
 -------------------------
-- Bug in v4.17 beta was fixed: 7-Zip File Manager could crash 
+- Bug in v4.17 beta was fixed: 7-Zip File Manager could crash
   after some operations with archives
 
   
 4.17 beta      2005-04-18
 -------------------------
-- To increase protection from viruses, 7-Zip now does not open 
-  files with more than 4 continuous spaces in the name. 
+- To increase protection from viruses, 7-Zip now does not open
+  files with more than 4 continuous spaces in the name.
   And 7-Zip changes such long spaces in name to " ... " in the file list.
 - Code size optimization
 - Some files were moved from main package to extra package:
@@ -1129,9 +1133,9 @@ HISTORY of the 7-Zip
 
 4.16 beta      2005-03-29
 -------------------------
-- Speed optimization (5%) for 7z / LZMA 
+- Speed optimization (5%) for 7z / LZMA
 - 7za.exe now supports .Z archives
-- -r- switch in command line now is default for all commands 
+- -r- switch in command line now is default for all commands
 - Some bugs were fixed
 - New localization: Uzbek
 
@@ -1165,14 +1169,14 @@ HISTORY of the 7-Zip
 4.12 beta      2004-11-18
 -------------------------
 - Bug in v4.11 beta was fixed:
-    7-Zip created incorrect ZIP archives if file size was 
+    7-Zip created incorrect ZIP archives if file size was
     from 3.75 GB to 4 GB.
 
 
 4.11 beta      2004-11-16
 -------------------------
 - 7-Zip now shows file names during compressing/decompressing
-- 7-Zip now supports Zip64 extension of ZIP format. So now it's 
+- 7-Zip now supports Zip64 extension of ZIP format. So now it's
   possible to compress files bigger than 4 GB to ZIP archives.
 - Some bugs were fixed
 - New localization: Galician
@@ -1197,7 +1201,7 @@ HISTORY of the 7-Zip
 
 4.08 beta      2004-10-04
 -------------------------
-- Bug in installer for v4.07 was fixed: when rebooting 
+- Bug in installer for v4.07 was fixed: when rebooting
   is required, it rebooted without asking user
 - Small fixes in 7-Zip GUI (7zG.exe)
 
@@ -1205,14 +1209,14 @@ HISTORY of the 7-Zip
 4.07 beta      2004-10-03
 -------------------------
 - Big amount of code was changed in this beta version.
-  So don't use it for important data compressing. 
+  So don't use it for important data compressing.
   And test archive after compressing.
 
 - Unified command line interface to GUI and console versions
-- 7-Zip now can extract or test several archives in one command  
-- 7-Zip now doesn't interrupt the compressing when file is locked by 
+- 7-Zip now can extract or test several archives in one command
+- 7-Zip now doesn't interrupt the compressing when file is locked by
   other application. 7-Zip just skips that file and shows warning.
-  Note: previous versions of 7-Zip had bug, so they can not unpack 
+  Note: previous versions of 7-Zip had bug, so they can not unpack
   non-solid and some solid 7z archives with such skipped files.
 - Command line interface was changed:
     - now it's possible to use absolute pathnames
@@ -1244,11 +1248,11 @@ HISTORY of the 7-Zip
 3.12           2003-12-10
 -------------------------
 - Now you can select compression method, dictionary size
-  and word size in "Add to archive" dialog box. Also it 
+  and word size in "Add to archive" dialog box. Also it
   shows memory usage.
 - 7-Zip File Manager now contains toolbars.
 - New "Benchmark" command in 7-Zip File Manager.
-  It measures compressing and decompressing speeds and 
+  It measures compressing and decompressing speeds and
   shows rating values.
 - Some bugs were fixed.
 
@@ -1260,11 +1264,11 @@ HISTORY of the 7-Zip
     - in Store mode:     0  B
     - in Fast mode:     16 MB
     - in Normal mode:  256 MB
-    - in Maximum mode:   1 GB 
-    - in Ultra mode:     4 GB 
-- 7z.exe, 7za.exe and SFX modules now support Unicode 
+    - in Maximum mode:   1 GB
+    - in Ultra mode:     4 GB
+- 7z.exe, 7za.exe and SFX modules now support Unicode
   file names under Windows NT/2000/XP/2003.
-  7zn.exe and 7zan.exe were removed from package. 
+  7zn.exe and 7zan.exe were removed from package.
 - Some bugs were fixed
 - New localization: Afrikaans
 
@@ -1273,16 +1277,16 @@ HISTORY of the 7-Zip
 -------------------------
 - Drag-and-Drop from external application
 - GUI version (7zG.exe) can compress files with absolute paths
-- Compression dialog doesn't suggest bzip2 and gzip2 types when 
+- Compression dialog doesn't suggest bzip2 and gzip2 types when
   there are more than one selected file
-- Optional auto renaming for existing files during extraction 
+- Optional auto renaming for existing files during extraction
   in command line version (-aot switch).
 - Some bugs were fixed
 
 
 3.09.02        2003-09-20
 -------------------------
-- Optional limitation for solid block size for increasing 
+- Optional limitation for solid block size for increasing
   the speed of random file decompressing (-ms switch)
 
 
@@ -1295,7 +1299,7 @@ HISTORY of the 7-Zip
     - Normal:   2 MB dictionary, BCJ filter
     - Maximum:  8 MB dictionary, BCJ filter, max settings
     - Ultra:   32 MB dictionary, BCJ2 filter, max settings
-- Updating solid 7z archives now is supported, if it doesn't 
+- Updating solid 7z archives now is supported, if it doesn't
   require repacking solid blocks
 - -mhcf switch for 7z format now is default
 - Some bugs were fixed
@@ -1325,7 +1329,7 @@ HISTORY of the 7-Zip
 -------------------------
 - Compress dialog:
    - Supporting fast compressing mode (-mx=1 switch)
-   - Multi-threading option for Multi-Processor systems 
+   - Multi-threading option for Multi-Processor systems
      or Pentium 4 with Hyper-Threading
    - Encrypt file names option
 - New context menu items:
@@ -1384,14 +1388,14 @@ HISTORY of the 7-Zip
 
 2.30 Beta 27   2003-01-24
 -------------------------
-- Two BUGs in two previous beta versions (Beta 25 and Beta 26) 
+- Two BUGs in two previous beta versions (Beta 25 and Beta 26)
   were fixed:
     1. Incorrect compressing to non-solid 7z archive
        when files have some very big sizes:
-       4 GB, 8 GB, 12 GB, 16 GB, ... 
+       4 GB, 8 GB, 12 GB, 16 GB, ...
     2. Incorrect percent showing in 7z compressing
        when files are bigger than 4 GB.
-- Supporting multivolume RAR and SPLIT archives. 
+- Supporting multivolume RAR and SPLIT archives.
 - Supporting DEB archives.
 - Supporting old version of CPIO format.
 - Some bugs were fixed.
@@ -1440,7 +1444,7 @@ HISTORY of the 7-Zip
   for compressing files.
 - New localizations: Belarusian, Greek.
 - Bug in FAR plugin was fixed:
-    Incorrect updating when archive has no explicit 
+    Incorrect updating when archive has no explicit
     directory items for file items.
 - Some bugs were fixed.
 
@@ -1532,7 +1536,7 @@ HISTORY of the 7-Zip
 2.30 Beta 9    2002-01-08
 -------------------------
 - Program localization: English, German, Russian.
-- Additional optimized versions of programs 
+- Additional optimized versions of programs
   for Windows NT4/2000/XP.
 - Two new match finders for LZMA: pat3h and pat4h.
 - Some bugs were fixed.
@@ -1540,11 +1544,11 @@ HISTORY of the 7-Zip
 
 2.30 Beta 8    2001-12-21
 -------------------------
-- 7-Zip now supports some zip archives that were not 
+- 7-Zip now supports some zip archives that were not
   supported by previous versions.
 - 7-Zip now supports new state (-uw switch) for cases
   when 7-Zip can not detect whether file is newer or the same.
-- Supporting anti-items in 7z format for incremental 
+- Supporting anti-items in 7z format for incremental
   update (-u with action #3).
 - Some bugs were fixed.
 
@@ -1555,11 +1559,11 @@ HISTORY of the 7-Zip
 - Supporting tar archives with very long file names
   (GNU extension to 'tar' format).
 - Supporting multistream coders in 7z (-mb switch).
-- More compressing parameters for zip and gzip 
+- More compressing parameters for zip and gzip
   in console version (-m switch).
 - Solid compressing option in Windows version.
 - Compressing parameters option in Windows version.
-- Auto renaming existing files feature for 
+- Auto renaming existing files feature for
   extracting files.
 - Overwrite mode switch for extracting (-ao).
 - Some bugs were fixed.
@@ -1591,22 +1595,22 @@ HISTORY of the 7-Zip
 
 2.30 Beta 3    2001-09-10
 -------------------------
-- Bug was fixed: decompressing .7z solid archives 
+- Bug was fixed: decompressing .7z solid archives
   containing empty files.
-- new 7za.exe: standalone command line version 
+- new 7za.exe: standalone command line version
   (only for 7z format).
-- Speed of compressing to Deflate format (zip, gzip) 
+- Speed of compressing to Deflate format (zip, gzip)
   was slightly increased.
 
 
 2.30 Beta 2    2001-08-30
 -------------------------
 - Supporting the new 7z format with high compression ratio.
-- -bd (Disable percentage indicator) switch in 
+- -bd (Disable percentage indicator) switch in
   console version.
-- Bug in console version was fixed: 
-    previous versions incorrectly execute compression 
-    commands with non-recursive wildcards in combination 
+- Bug in console version was fixed:
+    previous versions incorrectly execute compression
+    commands with non-recursive wildcards in combination
     with subfolders.
 - Some other bugs were fixed.
 
@@ -1614,9 +1618,9 @@ HISTORY of the 7-Zip
 2.30 Beta 1    2001-05-07
 -------------------------
 - Speed of reading of archive contents was increased.
-- Bug was fixed: incorrect showing file names with 
+- Bug was fixed: incorrect showing file names with
   national charsets in some zip archives.
-- Now it is possible to compress files larger than 4GB 
+- Now it is possible to compress files larger than 4GB
   to GZip archives.
 
 
@@ -1637,10 +1641,10 @@ HISTORY of the 7-Zip
 -------------------------
 - Supporting Zip archives containing more than 65535 files.
 - Speed of Plugin for Explorer was increased.
-- Searching start position of archive now is limited by 
+- Searching start position of archive now is limited by
   first 1MB part of file.
 - Some bugs were fixed.
-- Packet now doesn't contain 7zip.exe, far7zip.reg and 
+- Packet now doesn't contain 7zip.exe, far7zip.reg and
   far7zip2.reg files. There is new far7z.reg file.
 
 
@@ -1650,18 +1654,18 @@ HISTORY of the 7-Zip
 
     - Showing process box during opening archives.
     - Viewing properties of file by Ctrl-A.
-    - Alt-F6 in archive now immediately extracts selected files 
+    - Alt-F6 in archive now immediately extracts selected files
       to current directory.
       
 - Some bugs were fixed:
     
-    - Entering to archive's subfolders in Explorer by clicking 
+    - Entering to archive's subfolders in Explorer by clicking
       items in main window didn't work under Windows ME/2000.
     - Decompressing solid Rar archives sometimes gave error.
-    - Console version 7z.exe during list operation incorrectly 
+    - Console version 7z.exe during list operation incorrectly
       showed file names with national (non-english) charsets.
     - FAR Plugin didn't execute some operations.
-    - Showing percents during extracting ZIP archives sometimes 
+    - Showing percents during extracting ZIP archives sometimes
       was incorrect.
 
 
@@ -1670,8 +1674,8 @@ HISTORY of the 7-Zip
 - Supporting BZip2 and Cab.
 - New program architecture with external
   compression and cryptographic modules.
-- Decryption support (Rar and Zip). 
-- New console client. 
+- Decryption support (Rar and Zip).
+- New console client.
 - Some bugs were fixed.
 
 
