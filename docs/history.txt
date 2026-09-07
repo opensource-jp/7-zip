@@ -1,6 +1,13 @@
 HISTORY of the 7-Zip
 --------------------
 
+26.03          2026-09-03
+-------------------------
+- Improved support for Joliet ISO images and Compound archives.
+- Some bugs and vulnerabilities were fixed.
+- CVE-2026-58052 : 7-Zip failed to preserve the Mark-of-the-Web when extracting a crafted archive.
+
+
 26.02          2026-06-25
 -------------------------
 - Some bugs and vulnerabilities were fixed.
