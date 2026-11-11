@@ -1,3 +1,4 @@
+/*
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -26,6 +27,7 @@ var map2 = googletag.sizeMapping().addSize([740, 100], [728, 90]).addSize([480, 
 googletag.pubads().enableSingleRequest();
 googletag.enableServices();
 });
+*/
 
 var ins ='<A href="http://www.7-zip.org/">English</A><BR>'+
 '<A href="https://sparanoid.com/lab/7z/">Chinese Simpl.</A><BR>'+
@@ -40,8 +42,9 @@ var ins ='<A href="http://www.7-zip.org/">English</A><BR>'+
 '<HR><A HREF="https://7-max.com/">7-max</A><HR>';
 $("p#language").prepend(ins);
 
+/*
 googletag.cmd.push(
 	function(){googletag.display('gpt-omr');},
 	function(){googletag.display('gpt-ofr');}
 );
-
+*/
